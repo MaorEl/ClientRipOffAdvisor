@@ -1,6 +1,6 @@
 <!-- css -->
 <style>
-    img {
+    .poi_image {
         height: 100px;
     }
 </style>
@@ -11,5 +11,5 @@
 <p ng-repeat="(id, city) in poiCtrl.cities">
     City Name: <span ng-bind="city.name"></span><br>
     City State: <span ng-bind="city.state"></span><br>
-    <img ng-src="{{ city.image }}">
+    <img class="poi_image" ng-src="{{ city.image }}">
 </p>

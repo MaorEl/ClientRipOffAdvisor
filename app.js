@@ -5,8 +5,8 @@ app.config(function($routeProvider)  {
     $routeProvider
         // homepage
         .when('/', {
-            // this is a template
-            template: '<h1>This is the default route</h1>'
+            templateUrl: 'pages/explore/explore.html',
+            controller : 'exploreController as expCtrl'
         })
         // about
         .when('/about', {
@@ -26,3 +26,6 @@ app.config(function($routeProvider)  {
         // other
         .otherwise({ redirectTo: '/' });
 });
+
+
+
