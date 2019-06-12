@@ -5,14 +5,9 @@ angular.module("myApp")
         method : "GET",
         url : "http://localhost:5000/getThreeRandom/3"
     }).then(function mySuccess(response) {
-        console.log(response.data);
         var results = response.data;
         $scope.atractions = response.data;
-        var x = 5;
-        console.log(x);
     }, function myError(response) {
         $scope.myWelcome = response.statusText;
-        var x = 8;
-        console.log(x);
     })
 });
