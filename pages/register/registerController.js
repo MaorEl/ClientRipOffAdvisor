@@ -1,6 +1,7 @@
 // poi controller
 angular.module("myApp")
     .controller("registerController", function ($scope, $http, $rootScope) {
+
         $scope.signUp = function () {
             var _username = $scope.username;
             var _password = $scope.password;
@@ -40,8 +41,33 @@ angular.module("myApp")
                     alert("Problem with sign up \n" + response.data);
                 })
         };
+
+
+        //get list of categories
+        $scope.testme = function () {
+            var reqget = {
+                method: 'Get',
+                url: 'http://localhost:5000/getAllCategories',
+                headers: {
+                    'content-type': 'application/json'
+                },
+            };
+            var allCategoryFromServer = [];
+            $http(reqget)
+                .then(function mySuccess(response) {
+                    for (i = 0; i < response.data.length; i++) {
+                        allCategoryFromServer.push(response.data[i].category_name);
+                    }
+                    console.log("ok");
+                }, function myError(response) {
+                    console.log("error");
+                })
+        };
+
+
         $scope.restorePassword = function ($rootScope, $scope) {
             $rootScope.usernameForRestore = $scope.usernameForRestore;
 
         };
-    });
+    })
+;
