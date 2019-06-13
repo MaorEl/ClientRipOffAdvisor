@@ -1,7 +1,9 @@
 // poi controller
 angular.module("myApp")
     .controller("registerController", function ($scope, $http, $rootScope) {
-
+        var allCategoryFromServer = [];
+        getCategory();
+        console.log(allCategoryFromServer);
         $scope.signUp = function () {
             var _username = $scope.username;
             var _password = $scope.password;
@@ -44,7 +46,7 @@ angular.module("myApp")
 
 
         //get list of categories
-        $scope.testme = function () {
+        function getCategory() {
             var reqget = {
                 method: 'Get',
                 url: 'http://localhost:5000/getAllCategories',
@@ -52,7 +54,6 @@ angular.module("myApp")
                     'content-type': 'application/json'
                 },
             };
-            var allCategoryFromServer = [];
             $http(reqget)
                 .then(function mySuccess(response) {
                     for (i = 0; i < response.data.length; i++) {
