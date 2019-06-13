@@ -16,10 +16,10 @@ app.config(function($routeProvider)  {
             templateUrl: 'pages/about/about.html',
             controller : 'aboutController as abtCtrl'
         })
-        // poi
-        .when('/poi', {
-            templateUrl: 'pages/poi/poi.html',
-            controller : 'poiController as poiCtrl'
+        // interestPoints
+        .when('/interestPoints', {
+            templateUrl: 'pages/interestPoints/interestPoints.html',
+            controller : 'interestPointsController as interestPointsCtrl'
         })
         .when('/httpRequest', {
             templateUrl: 'pages/http/request.html',
@@ -32,6 +32,10 @@ app.config(function($routeProvider)  {
         .when('/questions', {
             templateUrl: 'pages/questions/questions.html',
             controller : 'questionsController as questionsCtrl'
+        })
+        .when('/home', {
+            templateUrl: 'pages/home/home.html',
+            controller : 'homeController as homeCtrl'
         })
         // other
         .otherwise({ redirectTo: '/' });

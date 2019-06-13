@@ -1,4 +1,4 @@
-// poi controller
+// interestPoints controller
 angular.module("myApp")
 .controller("httpController", function ($scope,$http) {
     self = this;
