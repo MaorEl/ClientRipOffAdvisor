@@ -17,18 +17,18 @@ angular.module("myApp")
                 data: { username: _username,
                         password: _password }
             };
-            $http(req,)
+            $http(req)
             .then(function mySuccess(response) {
-                $scope.x_auth_token = response.headers['x-auth-token'];
                 $rootScope.user = _username;
+                $rootScope.myToken = response.data;
+                // console.log($rootScope.myToken);
+
             }, function myError(response) {
                 // $scope.myWelcome = response.statusText;
             })
         };
-        $scope.restorePassword = function () {
-            var req = {
-                method: 'GET',
-                url: 'http://localhost:5000/getUserQuestion/' + $scope.usernameForRestore
-            };
+        $scope.restorePassword = function ($rootScope,$scope) {
+            $rootScope.usernameForRestore = $scope.usernameForRestore;
+
         };
     });

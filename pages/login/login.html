@@ -10,8 +10,8 @@
         <p class="forgot" style="color: blue" ng-click="stepOneRestore=true;" ng-init="stepOneRestore=false;">Forgot Password?</p>
         <br>
         <p ng-show="stepOneRestore">Enter your username:</p>
-        <input type="text" placeholder="Username" ng-show="stepOneRestore">
-        <button ng-click="restorePassword()">OK</button>
+        <input type="text" placeholder="Username" ng-show="stepOneRestore" ng-model="usernameForRestore">
+        <button ng-click="restorePassword()" ng-show="stepOneRestore"><a href="#!questions" style="color: black">OK</a></button>
     </form>
 
 </div>

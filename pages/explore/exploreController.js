@@ -1,6 +1,7 @@
 // about controller
 angular.module("myApp")
 .controller("exploreController", function ($scope, $http) {
+
     $http({
         method : "GET",
         url : "http://localhost:5000/getThreeRandom/3"
