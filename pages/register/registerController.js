@@ -1,9 +1,9 @@
 // poi controller
 angular.module("myApp")
     .controller("registerController", function ($scope, $http, $rootScope) {
-        var allCategoryFromServer = [];
-        getCategory();
-        console.log(allCategoryFromServer);
+        var allCategoryFromServer = []; //todo this holds the list of catagorys, need to add it to select list in html
+        start();
+        console.log("print list" + allCategoryFromServer);
         $scope.signUp = function () {
             var _username = $scope.username;
             var _password = $scope.password;
@@ -43,8 +43,24 @@ angular.module("myApp")
                     alert("Problem with sign up \n" + response.data);
                 })
         };
+        function setlist() {
+            var select = document.getElementById("selectCountry");
+            var options = ["1", "2", "3", "4", "5"];
+            for (var i = 0; i < allCategoryFromServer.length; i++) {
+                var opt = allCategoryFromServer[i];
+                var el = document.createElement("option");
+                el.textContent = opt;
+                el.value = opt;
+                select.appendChild(el);
+            }
+        }
 
-
+        function start() {
+            getCategory();
+            console.log("catagory imported from sql");
+            setlist();
+            console.log("list create");
+        }
         //get list of categories
         function getCategory() {
             var reqget = {
