@@ -2,7 +2,7 @@
 angular.module("myApp")
     .controller("loginController", function ($scope,$http,$rootScope) {
         $scope.stepOneRestore = false;
-        $scope.checkCardentioals = function () {
+            $scope.checkCardentioals = function () {
             var _username = $scope.username;
             var _password = $scope.password;
 
