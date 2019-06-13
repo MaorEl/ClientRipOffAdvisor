@@ -1,15 +1,38 @@
-<!-- css -->
-<style>
-    .poi_image {
-        height: 100px;
-    }
-</style>
 
-<h2>POI</h2>
+<h2>Interest Points</h2>
 
-<!-- display all cities -->
-<p ng-repeat="(id, city) in poiCtrl.cities">
-    City Name: <span ng-bind="city.name"></span><br>
-    City State: <span ng-bind="city.state"></span><br>
-    <img class="poi_image" ng-src="{{ city.image }}">
-</p>
+<div style="overflow: scroll;height: 400px;">
+    <h3>{{category1_name}}</h3>
+    <div ng-repeat="atraction in category1" style="float: left; padding-left: 13px; ">
+        <div>
+            <img src="{{atraction.image}}">
+            <p class="underPhoto">{{atraction.name}}</p>
+            <img src="{{star}}" style="height: 32px; width: 32px;">
+        </div>
+    </div>
+</div>
+<div style="overflow: scroll;height: 400px;">
+    <p>{{category2_name}}</p>
+    <div ng-repeat="atraction in category2" style="float: left; padding-left: 13px">
+        <img src="{{atraction.image}}">
+        <p class="underPhoto">{{atraction.name}}</p>
+        <img src="{{star}}" style="height: 32px; width: 32px;">
+    </div>
+</div>
+<div style="overflow: scroll;height: 400px;">
+    <p>{{category3_name}}</p>
+    <div ng-repeat="atraction in category3" style="float: left; padding-left: 13px">
+        <img src="{{atraction.image}}">
+        <p class="underPhoto">{{atraction.name}}</p>
+        <img src="{{star}}" style="height: 32px; width: 32px;">
+    </div>
+    <br>
+</div>
+<div style="overflow: scroll;height: 300px;">
+    <p>{{category4_name}}</p>
+    <div ng-repeat="atraction in category4" style="float: left; padding-left: 13px">
+        <img src="{{atraction.image}}">
+        <p class="underPhoto">{{atraction.name}}</p>
+        <img src="{{star}}" style="height: 32px; width: 32px;">
+    </div>
+</div>
