@@ -1,6 +1,6 @@
 // about controller
 angular.module("myApp")
-    .controller("questionsController", function ($scope, $http,$rootScope) {
+    .controller("questionsController", function ($scope, $http, $rootScope) {
 
         var questions = {};
         var req = {
@@ -22,7 +22,7 @@ angular.module("myApp")
                 // $scope.myWelcome = response.statusText;
                 console.log("error in questionsController");
             });
-        $scope.restorePassword = function(){
+        $scope.restorePassword = function () {
             var ans = $scope.answer;
             var q_id = questions[$scope.selectedQuestion];
 
@@ -32,19 +32,21 @@ angular.module("myApp")
                 headers: {
                     'content-type': 'application/json'
                 },
-                data: { username: $rootScope.usernameForRestore,
-                        question: q_id,
-                        answer: ans }
+                data: {
+                    username: $rootScope.usernameForRestore,
+                    question: q_id,
+                    answer: ans
+                }
             };
 
             $http(req)
                 .then(function mySuccess(response) {
-                let pass = response.data[0]['password'];
-                $scope.password = pass;
-                $scope.valid = true;
-            }, function myError(response) {
-                // $scope.myWelcome = response.statusText;
-                console.log("error in questionsController restorePassword");
-            });
+                    let pass = response.data[0]['password'];
+                    $scope.password = pass;
+                    $scope.valid = true;
+                }, function myError(response) {
+                    // $scope.myWelcome = response.statusText;
+                    console.log("error in questionsController restorePassword");
+                });
         };
     });
