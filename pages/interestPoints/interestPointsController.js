@@ -5,7 +5,7 @@ angular.module("myApp")
 
     req = {
         method: 'GET',
-        url: 'http://localhost:5000/getAllCategories'
+        url: $rootScope.host + 'getAllCategories'
     };
 
     $http(req)
@@ -26,7 +26,7 @@ angular.module("myApp")
 
             req = {
                 method: 'GET',
-                url: 'http://localhost:5000/getAllInterestPointsByCategory/' + cat1['category_id']
+                url: $rootScope.host + 'getAllInterestPointsByCategory/' + cat1['category_id']
             };
             $http(req)
                 .then(function mySuccess(response) {
@@ -38,7 +38,7 @@ angular.module("myApp")
                 });
             req = {
                 method: 'GET',
-                url: 'http://localhost:5000/getAllInterestPointsByCategory/' + cat2['category_id']
+                url: $rootScope.host + 'getAllInterestPointsByCategory/' + cat2['category_id']
             };
             $http(req)
                 .then(function mySuccess(response) {
@@ -49,7 +49,7 @@ angular.module("myApp")
                 });
             req = {
                 method: 'GET',
-                url: 'http://localhost:5000/getAllInterestPointsByCategory/' + cat3['category_id']
+                url: $rootScope.host + 'getAllInterestPointsByCategory/' + cat3['category_id']
             };
             $http(req)
                 .then(function mySuccess(response) {
@@ -60,7 +60,7 @@ angular.module("myApp")
                 });
             req = {
                 method: 'GET',
-                url: 'http://localhost:5000/getAllInterestPointsByCategory/' + cat4['category_id']
+                url: $rootScope.host + 'getAllInterestPointsByCategory/' + cat4['category_id']
             };
             $http(req)
                 .then(function mySuccess(response) {

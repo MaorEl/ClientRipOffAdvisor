@@ -10,7 +10,7 @@ angular.module("myApp")
 
             var req = {
                 method: 'POST',
-                url: 'http://localhost:5000/login',
+                url: $rootScope.host + 'login',
                 headers: {
                     'content-type': 'application/json'
                 },

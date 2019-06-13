@@ -5,7 +5,7 @@ angular.module("myApp")
         var questions = {};
         var req = {
             method: 'GET',
-            url: 'http://localhost:5000/getUserQuestion/' + $rootScope.usernameForRestore
+            url: $rootScope.host + 'getUserQuestion/' + $rootScope.usernameForRestore
         };
 
         $http(req)
@@ -28,7 +28,7 @@ angular.module("myApp")
 
             req = {
                 method: 'POST',
-                url: 'http://localhost:5000/RestorePassword',
+                url: $rootScope.host + 'RestorePassword',
                 headers: {
                     'content-type': 'application/json'
                 },

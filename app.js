@@ -1,6 +1,5 @@
 let myToken = null;
 let app = angular.module('myApp', ["ngRoute"]);
-
 // config routes
 app.config(function ($routeProvider) {
     $routeProvider
@@ -44,5 +43,8 @@ app.config(function ($routeProvider) {
         .otherwise({redirectTo: '/'});
 });
 
+app.run(function($rootScope) {
+    $rootScope.host = "http://localhost:5000/";
+});
 
 
