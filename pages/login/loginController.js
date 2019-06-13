@@ -1,4 +1,4 @@
-// poi controller
+// interestPoints controller
 angular.module("myApp")
     .controller("loginController", function ($scope,$http,$rootScope) {
         $scope.stepOneRestore = false;
