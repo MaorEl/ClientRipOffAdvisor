@@ -1,8 +1,10 @@
 // poi controller
 angular.module("myApp")
     .controller("registerController", function ($scope, $http, $rootScope) {
-        var allCategoryFromServer = []; //todo this holds the list of catagorys, need to add it to select list in html
+        const allCategoryFromServer = getCategory(); //todo this holds the list of catagorys, need to add it to select list in html
+        console.log(allCategoryFromServer)
         start();
+        console.log(allCategoryFromServer)
         console.log("print list" + allCategoryFromServer);
         $scope.signUp = function () {
             var _username = $scope.username;
@@ -72,9 +74,11 @@ angular.module("myApp")
             };
             $http(reqget)
                 .then(function mySuccess(response) {
+                    var allCategoryFromServer2 = [];
                     for (i = 0; i < response.data.length; i++) {
-                        allCategoryFromServer.push(response.data[i].category_name);
+                        allCategoryFromServer2.push(response.data[i].category_name);
                     }
+                    return allCategoryFromServer2;
                     console.log("ok");
                 }, function myError(response) {
                     console.log("error");
