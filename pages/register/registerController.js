@@ -33,7 +33,8 @@ angular.module("myApp")
                 .then(function mySuccess() {
                     console.log("ok");
                     alert("Hello " + _first_name + "\nRegister successful");
-                    //todo after register redirect page
+                    //todo after register redirect page without refresh
+                    window.location.href = "#!";
                 }, function myError(response) {
                     console.log(response.data)
                     alert("Problem with sign up \n" + response.data);
