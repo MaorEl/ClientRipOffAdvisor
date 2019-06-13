@@ -16,7 +16,7 @@ angular.module("myApp")
 
             var req = {
                 method: 'POST',
-                url: 'http://localhost:5000/register',
+                url: $rootScope.host + 'register',
                 headers: {
                     'content-type': 'application/json'
                 },
@@ -65,7 +65,7 @@ angular.module("myApp")
         function getCategory() {
             var reqget = {
                 method: 'Get',
-                url: 'http://localhost:5000/getAllCategories',
+                url: $rootScope.host + 'getAllCategories',
                 headers: {
                     'content-type': 'application/json'
                 },
