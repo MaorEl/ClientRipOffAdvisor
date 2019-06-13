@@ -1,6 +1,7 @@
 // poi controller
 angular.module("myApp")
     .controller("loginController", function ($scope,$http,$rootScope) {
+        $scope.stepOneRestore = false;
         $scope.checkCardentioals = function () {
             var _username = $scope.username;
             var _password = $scope.password;
@@ -18,15 +19,16 @@ angular.module("myApp")
             };
             $http(req,)
             .then(function mySuccess(response) {
-                // console.log(response.data);
                 $scope.x_auth_token = response.headers['x-auth-token'];
                 $rootScope.user = _username;
-                // console.log($scope);
             }, function myError(response) {
                 // $scope.myWelcome = response.statusText;
             })
         };
         $scope.restorePassword = function () {
-//todo
+            var req = {
+                method: 'GET',
+                url: 'http://localhost:5000/getUserQuestion/' + $scope.usernameForRestore
+            };
         };
     });

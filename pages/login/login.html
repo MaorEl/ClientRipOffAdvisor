@@ -7,7 +7,11 @@
         <input class="un" type="text" placeholder="Username" ng-model="username">
         <input class="pass" type="password" placeholder="Password" ng-model="password">
         <a class="submit" href="#!" ng-click="checkCardentioals()">Sign in</a>
-        <p class="forgot"><a href="#" ng-click="restorePassword()">Forgot Password?</a></p>
+        <p class="forgot" style="color: blue" ng-click="stepOneRestore=true;" ng-init="stepOneRestore=false;">Forgot Password?</p>
+        <br>
+        <p ng-show="stepOneRestore">Enter your username:</p>
+        <input type="text" placeholder="Username" ng-show="stepOneRestore">
+        <button ng-click="restorePassword()">OK</button>
     </form>
 
 </div>
