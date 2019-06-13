@@ -21,14 +21,15 @@ angular.module("myApp")
             .then(function mySuccess(response) {
                 $rootScope.user = _username;
                 $rootScope.myToken = response.data;
-                // console.log($rootScope.myToken);
-
             }, function myError(response) {
                 // $scope.myWelcome = response.statusText;
+                console.log("error in loginController.checkCardentioals");
             })
         };
-        $scope.restorePassword = function ($rootScope,$scope) {
-            $rootScope.usernameForRestore = $scope.usernameForRestore;
-
+        $scope.restorePassword = function () {
+            // console.log($scope);
+            var usernameForRestore = $scope.usernameForRestore;
+            // console.log(usernameForRestore);
+            $rootScope.usernameForRestore = usernameForRestore;
         };
     });
