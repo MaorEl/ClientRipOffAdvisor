@@ -27,7 +27,19 @@
         <span ng-show="loginForm.categories.$error.required">please fill this box! with at least 2 categories x,y... </span>
         <span ng-show="loginForm.categories.$error.minlength">to short</span>
         <br><br>
+
+        <input type="checkbox" name="cat1" ng-model="cat1"> 1<br>
+        <input type="checkbox" name="cat2" value="cat2"> 2<br>
+        <input type="checkbox" name="cat3" value="cat3"> 3<br>
+        <input type="checkbox" name="cat4" value="cat4" checked> 4<br><br>
+
         <input ng-disabled="loginForm.$invalid" type="submit" id="submit" value="Submit">
+        <br>
+        <br>
+        <br>
+
+        <button ng-click="testme()"></button>
+
         <br>
     </form>
 

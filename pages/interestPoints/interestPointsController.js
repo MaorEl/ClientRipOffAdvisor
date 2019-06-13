@@ -1,10 +1,79 @@
 // interestPoints controller
 angular.module("myApp")
-.controller("interestPointsController", function ($scope) {
+.controller("interestPointsController", function ($scope, $http,$rootScope) {
     self = this;
-    self.cities = {
-        1: {name:"Paris", state: "France", image: "https://media-cdn.tripadvisor.com/media/photo-s/0d/f5/7c/f2/eiffel-tower-priority.jpg"},
-        2: {name:"Jerusalem", state: "Israel", image: "https://cdni.rt.com/files/2017.12/article/5a3fe04efc7e93cd698b4567.jpg"},
-        3: {name:"London", state: "England", image: "http://www.ukguide.co.il/Photos/England/London/British-Royal-Tour.jpg"}
-    }
+
+    req = {
+        method: 'GET',
+        url: 'http://localhost:5000/getAllCategories'
+    };
+
+    $http(req)
+        .then(function mySuccess(response) {
+            var allCategories = response.data;
+            var cat1 = allCategories[0];
+            var cat2 = allCategories[1];
+            var cat3 = allCategories[2];
+            var cat4 = allCategories[3];
+
+            $scope.category1_name = cat1['category_name'];
+            $scope.category2_name = cat2['category_name'];
+            $scope.category3_name = cat3['category_name'];
+            $scope.category4_name = cat4['category_name'];
+
+            if ($rootScope.myToken == null)
+                $scope.star="images\\Star-Empty-icon.png";
+
+            req = {
+                method: 'GET',
+                url: 'http://localhost:5000/getAllInterestPointsByCategory/' + cat1['category_id']
+            };
+            $http(req)
+                .then(function mySuccess(response) {
+                var results = response.data;
+                $scope.category1 = response.data;
+
+                }, function myError(response) {
+                    $scope.myWelcome = response.statusText;
+                });
+            req = {
+                method: 'GET',
+                url: 'http://localhost:5000/getAllInterestPointsByCategory/' + cat2['category_id']
+            };
+            $http(req)
+                .then(function mySuccess(response) {
+                    var results = response.data;
+                    $scope.category2 = response.data;
+                }, function myError(response) {
+                    $scope.myWelcome = response.statusText;
+                });
+            req = {
+                method: 'GET',
+                url: 'http://localhost:5000/getAllInterestPointsByCategory/' + cat3['category_id']
+            };
+            $http(req)
+                .then(function mySuccess(response) {
+                    var results = response.data;
+                    $scope.category3 = response.data;
+                }, function myError(response) {
+                    $scope.myWelcome = response.statusText;
+                });
+            req = {
+                method: 'GET',
+                url: 'http://localhost:5000/getAllInterestPointsByCategory/' + cat4['category_id']
+            };
+            $http(req)
+                .then(function mySuccess(response) {
+                    var results = response.data;
+                    $scope.category4 = response.data;
+                }, function myError(response) {
+                    $scope.myWelcome = response.statusText;
+                });
+
+        }, function myError(response) {
+            // $scope.myWelcome = response.statusText;
+            console.log("error in loginController.checkCardentioals");
+        });
+
+
 });
