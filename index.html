@@ -28,10 +28,14 @@
             <a href="#!about">About</a>
             <a href="#!interestPoints">Interest Points</a>
             <a href="#!httpRequest">POI</a>
-            <p class="register_menu">Hello {{user}}!</p>
+            <p class="register_menu">Hello {{user}}!</p>`
             <a class="register_menu" href="#!register">Register NOW</a>
             <a class="register_menu" href="#!login" ng-hide="logged">Login</a>
-            <a class="register_menu" href="javascript:void(0)" ng-click="logout()" ng-hide="not_logged">Logout</a>
+            <a class="register_menu" ng-hide="not_logged" href="#!" ng-click="logout()">Log Out</a>
+
+
+
+
 
 
         </div>
