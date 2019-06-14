@@ -14,7 +14,7 @@ angular.module("myApp")
             var _country = $scope.country;
             var _city = $scope.city;
             var _email = $scope.email;
-            var _categories = $scope.categories;
+            var _categories = $scope.selection;
 
             var req = {
                 method: 'POST',
