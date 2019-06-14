@@ -7,7 +7,7 @@
         <div>
             <img src="{{atraction.image}}">
             <p class="underPhoto">{{atraction.name}}</p>
-            <img src={{atraction.isFavor}} style="height: 32px; width: 32px;">
+            <img ng-src={{atraction.isFavor}} ng-click="addOrRemoveToFavorite(atraction.id,atraction.isFavor,atraction)" style="height: 32px; width: 32px;">
 
         </div>
     </div>
@@ -17,7 +17,7 @@
     <div ng-repeat="atraction in category2" ng-init="registered=false;"  style="float: left; padding-left: 13px">
         <img src="{{atraction.image}}">
         <p class="underPhoto">{{atraction.name}}</p>
-        <img src={{atraction.isFavor}} style="height: 32px; width: 32px;">
+        <img src={{atraction.isFavor}} ng-click="addOrRemoveToFavorite(atraction.id,atraction.isFavor,atraction)" style="height: 32px; width: 32px;">
     </div>
 </div>
 <div style="overflow: scroll;height: 400px;">
@@ -25,7 +25,7 @@
     <div ng-repeat="atraction in category3" style="float: left; padding-left: 13px">
         <img src="{{atraction.image}}">
         <p class="underPhoto">{{atraction.name}}</p>
-        <img src={{atraction.isFavor}} style="height: 32px; width: 32px;">
+        <img src={{atraction.isFavor}} ng-click="addOrRemoveToFavorite(atraction.id,atraction.isFavor,atraction)" style="height: 32px; width: 32px;">
     </div>
     <br>
 </div>
@@ -34,6 +34,6 @@
     <div ng-repeat="atraction in category4" style="float: left; padding-left: 13px">
         <img src="{{atraction.image}}">
         <p class="underPhoto">{{atraction.name}}</p>
-        <img src={{atraction.isFavor}} style="height: 32px; width: 32px;">
+        <img src={{atraction.isFavor}} ng-click="addOrRemoveToFavorite(atraction.id,atraction.isFavor,atraction)" style="height: 32px; width: 32px;">
     </div>
 </div>

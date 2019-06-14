@@ -57,7 +57,6 @@ angular.module("myApp")
                     else
                         results[i]["isFavor"] =  'images/Star-Empty-icon.png';
                 }
-                console.log(results);
                 $scope.category1 = results;
                 }, function myError(response) {
                     $scope.myWelcome = response.statusText;
@@ -70,7 +69,6 @@ angular.module("myApp")
             $http(req)
                 .then(function mySuccess(response) {
                     let results = response.data;
-                    console.log(dictionaryOfUserPoints);
                     for (let i = 0; i < results.length ; i ++){
                         if (dictionaryOfUserPoints.indexOf(results[i].id) !== -1)
                             results[i]["isFavor"] =  'images/Star-Full-icon.png';
@@ -120,6 +118,51 @@ angular.module("myApp")
             // $scope.myWelcome = response.statusText;
             console.log("error in loginController.checkCardentioals");
         });
+
+    $scope.addOrRemoveToFavorite = function (id, isFavor,atraction){
+        if ($rootScope.myToken != null){
+            if (isFavor === "images/Star-Empty-icon.png"){ //need to add to favorites
+                req = {
+                    method: 'POST',
+                    url: $rootScope.host + 'private/addToFavorites',
+                    headers: {
+                        'x-auth-token': $rootScope.myToken
+                    },
+                    params: {
+                        'ip_id': id
+                    }
+                };
+                $http(req)
+                    .then(function mySuccess(response) {
+                        atraction.isFavor = 'images/Star-Full-icon.png';
+                    }, function myError(response) {
+                        $scope.myWelcome = response.statusText;
+                    });
+            }
+            else{
+                req = {
+                    method: 'DELETE',
+                    url: $rootScope.host + 'private/deleteFromFavorites',
+                    headers: {
+                        'x-auth-token': $rootScope.myToken
+                    },
+                    params: {
+                        'ip_id': id
+                    }
+                };
+                $http(req)
+                    .then(function mySuccess(response) {
+                        atraction.isFavor = 'images/Star-Empty-icon.png';
+                    }, function myError(response) {
+                        $scope.myWelcome = response.statusText;
+                    });
+            }
+        }
+        else{
+            $window.alert("You need to Login to add to favorites :) ");
+        }
+    }
+
 
 
 });
