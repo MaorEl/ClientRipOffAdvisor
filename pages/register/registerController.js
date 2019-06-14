@@ -7,8 +7,8 @@ angular.module("myApp")
         updateFields();
 
         $scope.signUp = function () {
-            var _username = $scope.username;
-            var _password = $scope.password;
+            var _username = $scope.usernam;
+            var _password = $scope.passwor;
             var _first_name = $scope.first_name;
             var _last_name = $scope.last_name;
             var _country = $scope.country;
@@ -23,8 +23,8 @@ angular.module("myApp")
                     'content-type': 'application/json'
                 },
                 data: {
-                    username: _username,
-                    password: _password,
+                    usernam: _username,
+                    passwor: _password,
                     first_name: _first_name,
                     last_name: _last_name,
                     first_name: _country,
@@ -66,7 +66,7 @@ angular.module("myApp")
                     for (i = 0; i < response.data.length; i++) {
                         categoryList.push(response.data[i].category_name);
                     }
-                    setCountryList();
+                    setCategoryList();
                 }, function myError(response) {
                     console.log("error");
                 })
@@ -103,7 +103,7 @@ angular.module("myApp")
         }
 
         function setCategoryList() {
-            var select = document.getElementById("selectCountry");
+            var select = document.getElementById("selectCategory");
             for (var i = 0; i < categoryList.length; i++) {
                 var opt = categoryList[i];
                 var el = document.createElement("option");
@@ -111,15 +111,21 @@ angular.module("myApp")
                 el.value = opt;
                 select.appendChild(el);
             }
-        }
-
-        $scope.Topics =
-            {
-                option1: countryList[0],
-                option2: countryList[1],
-                option3: countryList[2],
-                option4: countryList[1],
+            $scope.category = categoryList.slice();
+            $scope.selection = [];
+            // Toggle selection for a given category by name
+            $scope.toggleSelection = function toggleSelection(categoryName) {
+                var idx = $scope.selection.indexOf(categoryName);
+                // Is currently selected
+                if (idx > -1) {
+                    $scope.selection.splice(idx, 1);
+                }
+                // Is newly selected
+                else {
+                    $scope.selection.push(categoryName);
+                }
             };
+        }
 
     })
 ;
