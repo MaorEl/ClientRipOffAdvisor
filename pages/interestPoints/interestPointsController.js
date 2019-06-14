@@ -161,6 +161,41 @@ angular.module("myApp")
         else{
             alert("You need to Login to add to favorites :) ");
         }
+    };
+    $scope.search = function () {
+        var text = $scope.search_text;
+        req = {
+            method: 'GET',
+            url: $rootScope.host + 'searchForInterestPoint/' + text
+        };
+        $http(req)
+            .then(function mySuccess(response) {
+                let results = response.data;
+                for (let i = 0; i < results.length ; i ++){
+                    if (dictionaryOfUserPoints.indexOf(results[i].id) !== -1)
+                        results[i]["isFavor"] =  'images/Star-Full-icon.png';
+                    else
+                        results[i]["isFavor"] =  'images/Star-Empty-icon.png';
+                }
+                $scope.search_results = results;
+                $scope.search_results_num = results.length;
+                $scope.search_results_boolean = true;
+                if (results.length !== 0) {
+                    $scope.results_text = "You have found " + results.length + " interest points:";
+                    $scope.category1_filter = false;
+                    $scope.category2_filter = false;
+                    $scope.category3_filter = false;
+                    $scope.category4_filter = false;
+
+                }
+                else
+                    $scope.results_text = "Sorry.. but there are no results. try to search something else";
+
+            }, function myError(response) {
+                $scope.myWelcome = response.statusText;
+                $scope.search_results_boolean = false;
+
+            });
     }
 
 
