@@ -1,6 +1,7 @@
 // poi controller
 angular.module("myApp")
     .controller("registerController", function ($scope, $http, $rootScope) {
+        //todo question need to add
         var categoryList = [];
         var countryList = [];
         updateFields();
