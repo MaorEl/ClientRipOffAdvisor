@@ -1,6 +1,6 @@
 // about controller
 angular.module("myApp")
-    .controller("exploreController", function ($scope, $http,$rootScope) {
+    .controller("exploreController", function ($scope, $http,$rootScope,$location) {
         var data = {
             method: "GET",
             url: $rootScope.host + "getThreeRandom/3"
@@ -11,4 +11,9 @@ angular.module("myApp")
         }, function myError(response) {
             $scope.myWelcome = response.statusText;
         })
+
+        $scope.openDetailsPage = function(atraction){
+            $rootScope.poi = atraction;
+            $location.path("/details");
+        };
     });

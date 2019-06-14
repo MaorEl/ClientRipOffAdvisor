@@ -5,8 +5,8 @@
     <h3>{{category1_name}}</h3>
     <div ng-repeat="atraction in category1" style="float: left; padding-left: 13px; ">
         <div>
-            <img src="{{atraction.image}}">
-            <p class="underPhoto">{{atraction.name}}</p>
+            <img src="{{atraction.image}}" ng-click="openDetailsPage(atraction)">
+            <p class="underPhoto" ng-click="openDetailsPage(atraction)">{{atraction.name}}</p>
             <img ng-src={{atraction.isFavor}} ng-click="addOrRemoveToFavorite(atraction.id,atraction.isFavor,atraction)" style="height: 32px; width: 32px;">
 
         </div>
@@ -15,16 +15,16 @@
 <div style="overflow: scroll;height: 400px;">
     <h3>{{category2_name}}</h3>
     <div ng-repeat="atraction in category2" ng-init="registered=false;"  style="float: left; padding-left: 13px">
-        <img src="{{atraction.image}}">
-        <p class="underPhoto">{{atraction.name}}</p>
+        <img src="{{atraction.image}}" ng-click="openDetailsPage(atraction)">
+        <p class="underPhoto" ng-click="openDetailsPage(atraction)">{{atraction.name}}</p>
         <img src={{atraction.isFavor}} ng-click="addOrRemoveToFavorite(atraction.id,atraction.isFavor,atraction)" style="height: 32px; width: 32px;">
     </div>
 </div>
 <div style="overflow: scroll;height: 400px;">
     <h3>{{category3_name}}</h3>
     <div ng-repeat="atraction in category3" style="float: left; padding-left: 13px">
-        <img src="{{atraction.image}}">
-        <p class="underPhoto">{{atraction.name}}</p>
+        <img src="{{atraction.image}}" ng-click="openDetailsPage(atraction)">
+        <p class="underPhoto" ng-click="openDetailsPage(atraction)">{{atraction.name}}</p>
         <img src={{atraction.isFavor}} ng-click="addOrRemoveToFavorite(atraction.id,atraction.isFavor,atraction)" style="height: 32px; width: 32px;">
     </div>
     <br>
@@ -32,8 +32,9 @@
 <div style="overflow: scroll;height: 300px;">
     <h3>{{category4_name}}</h3>
     <div ng-repeat="atraction in category4" style="float: left; padding-left: 13px">
-        <img src="{{atraction.image}}">
-        <p class="underPhoto">{{atraction.name}}</p>
+        <img src="{{atraction.image}}" ng-click="openDetailsPage(atraction)">
+        <p class="underPhoto" ng-click="openDetailsPage(atraction)">{{atraction.name}}</p>
         <img src={{atraction.isFavor}} ng-click="addOrRemoveToFavorite(atraction.id,atraction.isFavor,atraction)" style="height: 32px; width: 32px;">
     </div>
 </div>
+

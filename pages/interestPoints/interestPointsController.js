@@ -1,6 +1,6 @@
 // interestPoints controller
 angular.module("myApp")
-.controller("interestPointsController", function ($scope, $http,$rootScope) {
+.controller("interestPointsController", function ($scope, $http,$rootScope,$location) {
     req = {
         method: 'GET',
         url: $rootScope.host + 'getAllCategories'
@@ -161,8 +161,11 @@ angular.module("myApp")
         else{
             alert("You need to Login to add to favorites :) ");
         }
-    }
+    };
 
-
+    $scope.openDetailsPage = function(atraction){
+        $rootScope.poi = atraction;
+        $location.path("/details");
+    };
 
 });
