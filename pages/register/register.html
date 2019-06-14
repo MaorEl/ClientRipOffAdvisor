@@ -3,15 +3,15 @@
 
     <p class="sign">Register</p>
     <form name="loginForm" ng-submit="signUp()" novalidate>
-        <input type="text" name="usernam" ng-model="usernam" required ng-minlength="3" ng-maxlength="8">
-        <span ng-show="loginForm.usernam.$error.required">please fill this box! </span>
-        <span ng-show="loginForm.usernam.$error.minlength">Minimum length is 3 </span>
-        <span ng-show="loginForm.usernam.$error.maxlength">Maximum length is 8 </span>
+        <input type="text" name="username" ng-model="username" required ng-minlength="3" ng-maxlength="8">
+        <span ng-show="loginForm.username.$error.required">please fill this box! </span>
+        <span ng-show="loginForm.username.$error.minlength">Minimum length is 3 </span>
+        <span ng-show="loginForm.username.$error.maxlength">Maximum length is 8 </span>
         <br><br>
-        <input type="password" name="passwor" ng-model="passwor" required ng-minlength="5" ng-maxlength="10">
-        <span ng-show="loginForm.passwor.$error.required">please fill this box! </span>
-        <span ng-show="loginForm.passwor.$error.minlength">Minimum length is 5 </span>
-        <span ng-show="loginForm.passwor.$error.maxlength">Maximum length is 10 </span>
+        <input type="password" name="password" ng-model="password" required ng-minlength="5" ng-maxlength="10">
+        <span ng-show="loginForm.password.$error.required">please fill this box! </span>
+        <span ng-show="loginForm.password.$error.minlength">Minimum length is 5 </span>
+        <span ng-show="loginForm.password.$error.maxlength">Maximum length is 10 </span>
         <br><br>
         <input class="first_name" type="text" placeholder="First Name" ng-model="first_name">
         <br><br>

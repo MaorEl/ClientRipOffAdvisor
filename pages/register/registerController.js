@@ -7,15 +7,26 @@ angular.module("myApp")
         updateFields();
 
         $scope.signUp = function () {
-            var _username = $scope.usernam;
-            var _password = $scope.passwor;
+            var _username = $scope.username;
+            var _password = $scope.password;
             var _first_name = $scope.first_name;
             var _last_name = $scope.last_name;
-            var _country = $scope.country;
+            var _country = document.getElementById("selectCountry");
+            var temp = 0;
+            for (i = 0; i < _country.length; i++) {
+                if (_country[i].selected == true) {
+                    temp = _country[i].label;
+                    break;
+                }
+            }
+            _country = temp;
             var _city = $scope.city;
             var _email = $scope.email;
-            var _categories = $scope.selection;
-
+            var _categoriesBefore = $scope.selection;
+            var _categories = "";
+            if (_categoriesBefore.length > 0)
+                for (i = 0; i < _categoriesBefore.length; i++)
+                    _categories += [i] + ",";
             var req = {
                 method: 'POST',
                 url: $rootScope.host + 'register',
@@ -23,8 +34,8 @@ angular.module("myApp")
                     'content-type': 'application/json'
                 },
                 data: {
-                    usernam: _username,
-                    passwor: _password,
+                    username: _username,
+                    password: _password,
                     first_name: _first_name,
                     last_name: _last_name,
                     first_name: _country,
