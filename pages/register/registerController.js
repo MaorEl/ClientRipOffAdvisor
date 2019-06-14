@@ -25,8 +25,9 @@ angular.module("myApp")
             var _categoriesBefore = $scope.selection;
             var _categories = "";
             if (_categoriesBefore.length > 0)
-                for (i = 0; i < _categoriesBefore.length; i++)
+                for (i = 0; i < _categoriesBefore.length - 1; i++)
                     _categories += [i] + ",";
+            _categories += [_categoriesBefore.length];
             var req = {
                 method: 'POST',
                 url: $rootScope.host + 'register',
