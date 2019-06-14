@@ -1,11 +1,8 @@
 // poi controller
 angular.module("myApp")
     .controller("registerController", function ($scope, $http, $rootScope) {
-        const allCategoryFromServer = getCategory(); //todo this holds the list of catagorys, need to add it to select list in html
-        console.log(allCategoryFromServer)
+        $scope.allCategoryFromServer=[];
         start();
-        console.log(allCategoryFromServer)
-        console.log("print list" + allCategoryFromServer);
         $scope.signUp = function () {
             var _username = $scope.username;
             var _password = $scope.password;
@@ -37,6 +34,7 @@ angular.module("myApp")
             $http(req)
                 .then(function mySuccess() {
                     console.log("ok");
+                    console.log(allCategoryFromServer);
                     alert("Hello " + _first_name + "\nRegister successful");
                     //todo after register redirect page without refresh
                     window.location.href = "#!";
@@ -45,11 +43,11 @@ angular.module("myApp")
                     alert("Problem with sign up \n" + response.data);
                 })
         };
-        function setlist() {
+         function setlist() {
             var select = document.getElementById("selectCountry");
-            var options = ["1", "2", "3", "4", "5"];
-            for (var i = 0; i < allCategoryFromServer.length; i++) {
-                var opt = allCategoryFromServer[i];
+            var options = ["1", "2", "3", "4", "5"]; //todo update here to list
+            for (var i = 0; i < options.length; i++) {
+                var opt = options[i];
                 var el = document.createElement("option");
                 el.textContent = opt;
                 el.value = opt;
@@ -57,14 +55,14 @@ angular.module("myApp")
             }
         }
 
-        function start() {
+        function start () {
             getCategory();
             console.log("catagory imported from sql");
             setlist();
             console.log("list create");
         }
         //get list of categories
-        function getCategory() {
+        function getCategory () {
             var reqget = {
                 method: 'Get',
                 url: $rootScope.host + 'getAllCategories',
@@ -73,12 +71,13 @@ angular.module("myApp")
                 },
             };
             $http(reqget)
-                .then(function mySuccess(response) {
+                .then(function mySuccess(response) { //todo doesnt go in
                     var allCategoryFromServer2 = [];
                     for (i = 0; i < response.data.length; i++) {
                         allCategoryFromServer2.push(response.data[i].category_name);
+                        $scope.allCategoryFromServer.push(response.data[i].category_name);
                     }
-                    return allCategoryFromServer2;
+                    // return allCategoryFromServer2;
                     console.log("ok");
                 }, function myError(response) {
                     console.log("error");
