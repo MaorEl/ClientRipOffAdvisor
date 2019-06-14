@@ -23,6 +23,7 @@ angular.module("myApp")
                 .then(function mySuccess(response) {
                     $rootScope.user = _username;
                     $rootScope.myToken = response.data;
+                    $rootScope.home = "#!home";
                 }, function myError(response) {
                     // $scope.myWelcome = response.statusText;
                     console.log("error in loginController.checkCardentioals");

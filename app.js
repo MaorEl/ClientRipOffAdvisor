@@ -45,6 +45,7 @@ app.config(function ($routeProvider) {
 
 app.run(function($rootScope) {
     $rootScope.host = "http://localhost:5000/";
+    $rootScope.home = "#!";
 });
 
 

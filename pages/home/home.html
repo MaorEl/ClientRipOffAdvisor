@@ -9,8 +9,8 @@
     </div>
 </div>
 
-<div class="saved">
-    Your Last Two Saved Interest Points:
+<div class="saved" ng-init="saved_text='Your Last Two Saved Interest Points:'">
+    {{saved_text}}
     <div ng-repeat="atraction in saved_attractions" style="float: left; padding-left: 13px">
         <img src="{{atraction.image}}">
         <p class="underPhoto" style="padding-left: ({{atraction.image.width / 2}})px">{{atraction.name}}</p>
