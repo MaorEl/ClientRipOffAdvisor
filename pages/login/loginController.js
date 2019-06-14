@@ -1,6 +1,6 @@
 // interestPoints controller
 angular.module("myApp")
-    .controller("loginController", function ($scope, $http, $rootScope) {
+    .controller("loginController", function ($scope, $http, $rootScope, $location) {
         $scope.stepOneRestore = false;
             $scope.checkCardentioals = function () {
             var _username = $scope.username;
@@ -25,6 +25,7 @@ angular.module("myApp")
                     sessionStorage.setItem('username',$rootScope.user);
                     $rootScope.logged = true;
                     $rootScope.not_logged = false;
+                    $location.path("/home");
                 }, function myError(response) {
                     // $scope.myWelcome = response.statusText;
                     console.log("error in loginController.checkCardentioals");

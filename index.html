@@ -31,7 +31,7 @@
             <a href="#!interestPoints">Interest Points</a>
             <a href="#!httpRequest">POI</a>
             <p class="register_menu">Hello {{user}}!</p>`
-            <a class="register_menu" href="#!register">Register NOW</a>
+            <a class="register_menu" href="#!register" ng-hide="logged">Register NOW</a>
             <a class="register_menu" href="#!login" ng-hide="logged">Login</a>
             <a class="register_menu" ng-hide="not_logged" href="#!" ng-click="logout()">Log Out</a>
 

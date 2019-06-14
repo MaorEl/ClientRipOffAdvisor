@@ -47,11 +47,11 @@ angular.module("myApp")
 
             $http(req)
                 .then(function mySuccess() {
-                    alert("Hello " + _first_name + "\nRegister successful");
+                    alert("Hello " + _first_name + "\nSuccessfuly registered! \nPlease log in with your details to use your account!");
                     //todo after register redirect page without refresh
                     window.location.href = "#!";
                 }, function myError(response) {
-                    console.log(response.data)
+                    console.log(response.data);
                     alert("Problem with sign up \n" + response.data);
                 })
         };
