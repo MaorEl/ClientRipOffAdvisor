@@ -37,8 +37,14 @@ angular.module("myApp")
         $http(req).
         then(function mySuccess(response) {
             var results = response.data;
-            console.log(results);
-            $scope.saved_attractions = results;
+            if (results.length == 0) {
+                $scope.saved_text = "You have not saved any interest point yet. Explore them and save your favorites!"
+            }
+            else {
+                console.log(results);
+                $scope.saved_attractions = results;
+            }
+
         }, function myError(response) {
             $scope.myWelcome = response.statusText;
         })
