@@ -46,6 +46,15 @@ app.config(function ($routeProvider) {
 app.run(function($rootScope) {
     $rootScope.host = "http://localhost:5000/";
     $rootScope.home = "#!";
+
+    $rootScope.logout = function () {
+        sessionStorage.removeItem('token');
+        sessionStorage.removeItem('username');
+        $rootScope.logged = false;
+        $rootScope.not_logged = true;
+        $rootScope.user = 'guest';
+        $rootScope.myToken = null;
+    };
         if (sessionStorage.getItem("token")!= null) {
 
             $rootScope.user = sessionStorage.getItem("username");
