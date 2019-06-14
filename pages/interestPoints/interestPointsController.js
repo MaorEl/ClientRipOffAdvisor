@@ -159,7 +159,7 @@ angular.module("myApp")
             }
         }
         else{
-            $window.alert("You need to Login to add to favorites :) ");
+            alert("You need to Login to add to favorites :) ");
         }
     }
 
