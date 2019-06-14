@@ -102,6 +102,16 @@ angular.module("myApp")
             }
         }
 
+        function setCategoryList() {
+            var select = document.getElementById("selectCountry");
+            for (var i = 0; i < categoryList.length; i++) {
+                var opt = categoryList[i];
+                var el = document.createElement("option");
+                el.textContent = opt;
+                el.value = opt;
+                select.appendChild(el);
+            }
+        }
 
         $scope.Topics =
             {
