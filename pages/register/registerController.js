@@ -3,7 +3,6 @@ angular.module("myApp")
     .controller("registerController", function ($scope, $http, $rootScope) {
         var categoryList = [];
         var countryList = [];
-
         updateFields();
 
         $scope.signUp = function () {
