@@ -46,6 +46,20 @@ app.config(function ($routeProvider) {
 app.run(function($rootScope) {
     $rootScope.host = "http://localhost:5000/";
     $rootScope.home = "#!";
+        if (sessionStorage.getItem("token")!= null) {
+
+            $rootScope.user = sessionStorage.getItem("username");
+            $rootScope.myToken = sessionStorage.getItem("token");
+            $rootScope.logged = true;
+            $rootScope.not_logged = false;
+    } else {
+        console.log("no user logged right now");
+        $rootScope.user = 'guest';
+        $rootScope.logged = false;
+        $rootScope.not_logged = true;
+
+        }
+
 });
 
 

@@ -22,7 +22,7 @@
         <script src="pages/register/registerController.js"></script>
 
         <!-- menu -->
-        <div class="topnav" ng-init="user='guest'">
+        <div class="topnav">
             <img src="images/TripAdvisorLogo.jpg" height="60" width="90"/>
             <a class="active" href={{home}}>Home</a>
             <a href="#!about">About</a>
@@ -30,7 +30,10 @@
             <a href="#!httpRequest">POI</a>
             <p class="register_menu">Hello {{user}}!</p>
             <a class="register_menu" href="#!register">Register NOW</a>
-            <a class="register_menu" href="#!login">Login</a>
+            <a class="register_menu" href="#!login" ng-hide="logged">Login</a>
+            <a class="register_menu" href="javascript:void(0)" ng-click="logout()" ng-hide="not_logged">Logout</a>
+
+
         </div>
 
         <!-- This section changes as the hashbang changes -->
