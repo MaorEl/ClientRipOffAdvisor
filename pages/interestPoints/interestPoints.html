@@ -7,7 +7,7 @@
         <div>
             <img src="{{atraction.image}}">
             <p class="underPhoto">{{atraction.name}}</p>
-            <img src="{{star}}" style="height: 32px; width: 32px;">
+            <img src={{atraction.isFavor}} style="height: 32px; width: 32px;">
 
         </div>
     </div>
@@ -17,8 +17,7 @@
     <div ng-repeat="atraction in category2" ng-init="registered=false;"  style="float: left; padding-left: 13px">
         <img src="{{atraction.image}}">
         <p class="underPhoto">{{atraction.name}}</p>
-        <img src="../../images/Star-Empty-icon.png" ng-show="!registered" style="height: 32px; width: 32px;">
-        <img src="../../images/Star-Full-icon.png" ng-show="registered" style="height: 32px; width: 32px;">
+        <img src={{atraction.isFavor}} style="height: 32px; width: 32px;">
     </div>
 </div>
 <div style="overflow: scroll;height: 400px;">
@@ -26,7 +25,7 @@
     <div ng-repeat="atraction in category3" style="float: left; padding-left: 13px">
         <img src="{{atraction.image}}">
         <p class="underPhoto">{{atraction.name}}</p>
-        <img src="{{star}}" style="height: 32px; width: 32px;">
+        <img src={{atraction.isFavor}} style="height: 32px; width: 32px;">
     </div>
     <br>
 </div>
@@ -35,6 +34,6 @@
     <div ng-repeat="atraction in category4" style="float: left; padding-left: 13px">
         <img src="{{atraction.image}}">
         <p class="underPhoto">{{atraction.name}}</p>
-        <img src="{{star}}" style="height: 32px; width: 32px;">
+        <img src={{atraction.isFavor}} style="height: 32px; width: 32px;">
     </div>
 </div>

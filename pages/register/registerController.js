@@ -1,7 +1,11 @@
 // poi controller
 angular.module("myApp")
     .controller("registerController", function ($scope, $http, $rootScope) {
-
+        const allCategoryFromServer = getCategory(); //todo this holds the list of catagorys, need to add it to select list in html
+        console.log(allCategoryFromServer)
+        start();
+        console.log(allCategoryFromServer)
+        console.log("print list" + allCategoryFromServer);
         $scope.signUp = function () {
             var _username = $scope.username;
             var _password = $scope.password;
@@ -41,10 +45,26 @@ angular.module("myApp")
                     alert("Problem with sign up \n" + response.data);
                 })
         };
+        function setlist() {
+            var select = document.getElementById("selectCountry");
+            var options = ["1", "2", "3", "4", "5"];
+            for (var i = 0; i < allCategoryFromServer.length; i++) {
+                var opt = allCategoryFromServer[i];
+                var el = document.createElement("option");
+                el.textContent = opt;
+                el.value = opt;
+                select.appendChild(el);
+            }
+        }
 
-
+        function start() {
+            getCategory();
+            console.log("catagory imported from sql");
+            setlist();
+            console.log("list create");
+        }
         //get list of categories
-        $scope.testme = function () {
+        function getCategory() {
             var reqget = {
                 method: 'Get',
                 url: $rootScope.host + 'getAllCategories',
@@ -52,12 +72,13 @@ angular.module("myApp")
                     'content-type': 'application/json'
                 },
             };
-            var allCategoryFromServer = [];
             $http(reqget)
                 .then(function mySuccess(response) {
+                    var allCategoryFromServer2 = [];
                     for (i = 0; i < response.data.length; i++) {
-                        allCategoryFromServer.push(response.data[i].category_name);
+                        allCategoryFromServer2.push(response.data[i].category_name);
                     }
+                    return allCategoryFromServer2;
                     console.log("ok");
                 }, function myError(response) {
                     console.log("error");
