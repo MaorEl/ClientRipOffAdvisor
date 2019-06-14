@@ -111,15 +111,21 @@ angular.module("myApp")
                 el.value = opt;
                 select.appendChild(el);
             }
-        }
-
-        $scope.Topics =
-            {
-                option1: countryList[0],
-                option2: countryList[1],
-                option3: countryList[2],
-                option4: countryList[1],
+            $scope.category = categoryList.slice();
+            $scope.selection = [];
+            // Toggle selection for a given category by name
+            $scope.toggleSelection = function toggleSelection(categoryName) {
+                var idx = $scope.selection.indexOf(categoryName);
+                // Is currently selected
+                if (idx > -1) {
+                    $scope.selection.splice(idx, 1);
+                }
+                // Is newly selected
+                else {
+                    $scope.selection.push(categoryName);
+                }
             };
+        }
 
     })
 ;

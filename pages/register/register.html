@@ -34,7 +34,17 @@
             <option value="" disabled selected>Choose a country</option>
         </select>
 
-
+        <br><br>
+        <label ng-repeat="categoryName in category">
+            <input
+                    type="checkbox"
+                    name="selectedCategory[]"
+                    value="{{categoryName}}"
+                    ng-checked="selection.indexOf(categoryName) > -1"
+                    ng-click="toggleSelection(categoryName)"
+            > {{categoryName}}
+        </label>
+        <br><br>
         <input ng-disabled="loginForm.$invalid" type="submit" id="submit" value="Submit">
         <br>
         <br>
