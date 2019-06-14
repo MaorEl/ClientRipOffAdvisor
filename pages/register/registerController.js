@@ -19,7 +19,16 @@ angular.module("myApp")
                     break;
                 }
             }
-            _country = temp;
+            var _question = $scope.questionrestore;
+            var _questionpick = document.getElementById("selectQuestion");
+            var qid = 0;
+            for (i = 0; i < _questionpick.length; i++) {
+                if (_questionpick[i].selected == true) {
+                    qid = i;
+                    break;
+                }
+            }
+            _questionpick = qid;
             var _city = $scope.city;
             var _email = $scope.email;
             var _categoriesBefore = $scope.selection;
@@ -42,10 +51,28 @@ angular.module("myApp")
                     first_name: _country,
                     city: _city,
                     email: _email,
-                    categories: _categories
+                    categories: _categories,
                 }
             };
 
+            var req2 = {
+                method: 'POST',
+                url: $rootScope.host + 'insertAnswer',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                data: {
+                    username: _username,
+                    questionrestore: _question,
+                    questionask: _questionpick
+                }
+            };
+            $http(req2)
+                .then(function mySuccess() {
+                }, function myError(response) {
+                    console.log(response.data);
+                    alert("Problem with sign up \n" + response.data);
+                })
             $http(req)
                 .then(function mySuccess() {
                     alert("Hello " + _first_name + "\nSuccessfuly registered! \nPlease log in with your details to use your account!");
@@ -61,6 +88,7 @@ angular.module("myApp")
         function updateFields() {
             getCategory();
             getCountry();
+            getQuestion();
 
         }
 
@@ -83,6 +111,54 @@ angular.module("myApp")
                     console.log("error");
                 })
         };
+
+
+
+
+
+
+
+
+
+
+
+        //todo connect to api of get all question, fix private on server \ api
+        //get question
+        function getQuestion() {
+            var reqget = {
+                method: 'Get',
+                url: $rootScope.host + 'getAllQuestions',
+                headers: {
+                    'content-type': 'application/json'
+                },
+            };
+            $http(reqget)
+                .then(function mySuccess(response) {
+                    for (i = 0; i < response.data.length; i++) {
+                        categoryList.push(response.data[i].category_name);
+                    }
+                    setCategoryList();
+                }, function myError(response) {
+                    console.log("error");
+                })
+        };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         function getCountry() {
             var reqgetcountry = {
