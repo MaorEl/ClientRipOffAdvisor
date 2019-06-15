@@ -49,4 +49,12 @@ angular.module("myApp")
             $scope.myWelcome = response.statusText;
         })
     }
+
+
+    $scope.openDetailsPage = function(atraction){
+        sessionStorage.setItem('poi',JSON.stringify(atraction));
+        $rootScope.poi = atraction;
+        $location.path("/details");
+    };
+
 });
