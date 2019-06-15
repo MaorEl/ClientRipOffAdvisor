@@ -34,7 +34,7 @@ angular.module("myApp")
                     $scope.review1 = response.data[0]['review'];
                     $scope.rate1 = response.data[0]['rating'];
                    // const parsed1 = JSON.parse(response.data[0]['addedOn']);
-                    $scope.date1 = new Date(response.data[0]['addedOn']); //todo fix date time
+                    $scope.date1 = new Date(response.data[0]['addedOn']);
                     $scope.date1.setHours($scope.date1.getHours()+3)
                     $scope.date1 = $scope.date1.toUTCString();
                     $scope.date1 = $scope.date1.split(' ').slice(0, 5).join(' ');
@@ -58,14 +58,20 @@ angular.module("myApp")
         };
 
         $scope.postReview = function (radioResult) {
+
+
             if ($rootScope.myToken === undefined)
                 $scope.registered = false;
             else{
 
+
                 $scope.registered = true;
 
-                if ($scope.ReviewDescription === undefined)
-                    $scope.ReviewDescription = '';
+                    if ($scope.ReviewDescription === undefined)
+                        $scope.ReviewDescription = '';
+
+
+                console.log($rootScope.myToken);
 
                 req = {
                     method: 'POST',
@@ -80,9 +86,14 @@ angular.module("myApp")
                         description: $scope.ReviewDescription
                     }
                 };
+
+
+                console.log($rootScope.myToken);
                 $http(req)
                     .then(function mySuccess(response) {
                         // $scope.GotAReview = "modal";
+
+                        console.log($rootScope.myToken);
                     });
 
             }
