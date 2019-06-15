@@ -1,7 +1,22 @@
 angular.module("myApp")
     .controller("interestPointDetailsController", function ($scope, $http,$rootScope) {
 
-        var poi = $rootScope.poi;
+        var poi = JSON.parse(sessionStorage.getItem("poi"));
+
+        req = {
+            method: 'PUT',
+            url: $rootScope.host + 'viewInterestPoint/' + poi.id
+        };
+        $http(req)
+            .then(function mySuccess(response) {
+                console.log("im here");
+                if(!$scope.$$phase) {
+                    $scope.$apply();
+                }
+            });
+
+        poi.views += 1;
+        sessionStorage.setItem('poi',JSON.stringify(poi));
 
         $scope.atraction_name = poi.name;
         $scope.atraction_image = poi.image;
