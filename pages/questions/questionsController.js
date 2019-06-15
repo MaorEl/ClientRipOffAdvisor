@@ -55,7 +55,7 @@ angular.module("myApp")
                     }
                     else {
                         $scope.valid = false;
-                        alert("your answer is incorrect. please try again!")
+                        alert("your answer is incorrect. please try again!");
 
                     }
 

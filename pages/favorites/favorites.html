@@ -1,0 +1,21 @@
+
+<h2>Your Favorite Interest Points:</h2>
+<div>
+    <button ng-click="saved('rank')">Sort By Rank</button>
+    <button ng-click="saved('category')">Sort By Category</button>
+    <button ng-click="saved('random')">Sort Randomly</button>
+    <button ng-click="saveSort()">Save Order</button>
+
+
+
+</div>
+<div>
+    <div>
+        {{saved_text}}
+        <div ng-repeat="atraction in dictionaryOfUserPoints" style="float: left; padding-left: 13px">
+            <img src="{{atraction.image}}" ng-click="openDetailsPage(atraction)">
+            <p class="underPhoto" ng-click="openDetailsPage(atraction)">{{atraction.name}}</p>
+            <img src={{atraction.isFavor}} ng-click="addOrRemoveToFavorite(atraction.id,atraction.isFavor,atraction)" style="height: 32px; width: 32px;">
+        </div>
+    </div>
+</div>
