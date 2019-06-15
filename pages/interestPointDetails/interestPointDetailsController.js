@@ -3,6 +3,18 @@ angular.module("myApp")
 
         var poi = JSON.parse(sessionStorage.getItem("poi"));
 
+
+        req = {
+            method: 'GET',
+            url: $rootScope.host + 'getIntertestPointDetails/' + poi.id,
+        };
+        $http(req)
+            .then(function mySuccess(response) {
+                poi.rank = response.data[0]['rank'];
+                sessionStorage.setItem('poi',JSON.stringify(poi));
+                $scope.atraction_rank = poi.rank;
+            });
+
         req = {
             method: 'PUT',
             url: $rootScope.host + 'viewInterestPoint/' + poi.id
@@ -34,7 +46,7 @@ angular.module("myApp")
                     $scope.review1 = response.data[0]['review'];
                     $scope.rate1 = response.data[0]['rating'];
                    // const parsed1 = JSON.parse(response.data[0]['addedOn']);
-                    $scope.date1 = new Date(response.data[0]['addedOn']); //todo fix date time
+                    $scope.date1 = new Date(response.data[0]['addedOn']);
                     $scope.date1.setHours($scope.date1.getHours()+3)
                     $scope.date1 = $scope.date1.toUTCString();
                     $scope.date1 = $scope.date1.split(' ').slice(0, 5).join(' ');
@@ -58,14 +70,18 @@ angular.module("myApp")
         };
 
         $scope.postReview = function (radioResult) {
+
+
             if ($rootScope.myToken === undefined)
                 $scope.registered = false;
             else{
 
+
                 $scope.registered = true;
 
-                if ($scope.ReviewDescription === undefined)
-                    $scope.ReviewDescription = '';
+                    if ($scope.ReviewDescription === undefined)
+                        $scope.ReviewDescription = '';
+
 
                 req = {
                     method: 'POST',
@@ -80,9 +96,23 @@ angular.module("myApp")
                         description: $scope.ReviewDescription
                     }
                 };
+
                 $http(req)
                     .then(function mySuccess(response) {
-                        // $scope.GotAReview = "modal";
+                        // req = {
+                        //     method: 'GET',
+                        //     url: $rootScope.host + 'getIntertestPointDetails/' + poi.id,
+                        // };
+                        // $http(req)
+                        //     .then(function mySuccess(response) {
+                        //         console.log(response.data);
+                        //         poi.rank = response.data[0]['rank'];
+                        //         console.log(poi);
+                        //         sessionStorage.setItem('poi',JSON.stringify(poi));
+                        //         $scope.atraction_rank = poi.rank;
+                        //     });
+
+
                     });
 
             }
