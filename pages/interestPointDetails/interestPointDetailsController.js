@@ -71,8 +71,6 @@ angular.module("myApp")
                         $scope.ReviewDescription = '';
 
 
-                console.log($rootScope.myToken);
-
                 req = {
                     method: 'POST',
                     url: $rootScope.host + 'private/rankInterestPoint',
@@ -87,13 +85,10 @@ angular.module("myApp")
                     }
                 };
 
-
-                console.log($rootScope.myToken);
                 $http(req)
                     .then(function mySuccess(response) {
                         // $scope.GotAReview = "modal";
 
-                        console.log($rootScope.myToken);
                     });
 
             }
