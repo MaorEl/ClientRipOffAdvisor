@@ -71,7 +71,6 @@ angular.module("myApp")
             $http(req)
                 .then(function mySuccess() {
                     alert("Hello " + _first_name + "\nSuccessfuly registered! \nPlease log in with your details to use your account!");
-                    //todo after register redirect page without refresh
                     $location.path("/login");
                 }, function myError(response) {
                     console.log(response.data);
