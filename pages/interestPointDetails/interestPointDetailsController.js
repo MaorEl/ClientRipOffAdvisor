@@ -9,7 +9,6 @@ angular.module("myApp")
         };
         $http(req)
             .then(function mySuccess(response) {
-                console.log("im here");
                 if(!$scope.$$phase) {
                     $scope.$apply();
                 }
@@ -30,7 +29,7 @@ angular.module("myApp")
         };
         $http(req)
             .then(function mySuccess(response) {
-                if (response.data !== undefined){
+                if (response.data.length !== 0){
                     $scope.user1 = response.data[0]['username'];
                     $scope.review1 = response.data[0]['review'];
                     $scope.rate1 = response.data[0]['rating'];
@@ -48,5 +47,8 @@ angular.module("myApp")
 
         $scope.goBack = function () {
             $location.path(sessionStorage.getItem('lastLocation'));
-        }
+        };
+
     });
+
+
