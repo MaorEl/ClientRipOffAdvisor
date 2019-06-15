@@ -1,42 +1,37 @@
 // poi controller
 angular.module("myApp")
     .controller("registerController", function ($scope, $http, $rootScope) {
-        //todo question need to add
+
+        //list for category, country, question from DB
         var categoryList = [];
         var countryList = [];
+        var questionList = [];
+
+        //run as soon as we enter register page
         updateFields();
 
+        //when starting the register page, run this
+        function updateFields() {
+            getCategory();
+            getCountry();
+            getQuestion();
+        }
+
+        //sign up function
         $scope.signUp = function () {
             var _username = $scope.username;
             var _password = $scope.password;
             var _first_name = $scope.first_name;
             var _last_name = $scope.last_name;
             var _country = document.getElementById("selectCountry");
-            var temp = 0;
-            for (i = 0; i < _country.length; i++) {
-                if (_country[i].selected == true) {
-                    temp = _country[i].label;
-                    break;
-                }
-            }
+            _country = getSelectedCountry(_country);
             var _question = $scope.questionrestore;
             var _questionpick = document.getElementById("selectQuestion");
-            var qid = 0;
-            for (i = 0; i < _questionpick.length; i++) {
-                if (_questionpick[i].selected == true) {
-                    qid = i;
-                    break;
-                }
-            }
-            _questionpick = qid;
+            _questionpick = getQuestionpick(_questionpick);
             var _city = $scope.city;
             var _email = $scope.email;
-            var _categoriesBefore = $scope.selection;
-            var _categories = "";
-            if (_categoriesBefore.length > 0)
-                for (i = 0; i < _categoriesBefore.length - 1; i++)
-                    _categories += [i] + ",";
-            _categories += [_categoriesBefore.length];
+            var _categories = getCategories();
+
             var req = {
                 method: 'POST',
                 url: $rootScope.host + 'register',
@@ -85,14 +80,11 @@ angular.module("myApp")
         };
 
 
-        function updateFields() {
-            getCategory();
-            getCountry();
-            getQuestion();
+        //###################################################################################################
 
-        }
 
-        //get list of categories
+
+        //get all categories from DB
         function getCategory() {
             var reqget = {
                 method: 'Get',
@@ -112,18 +104,7 @@ angular.module("myApp")
                 })
         };
 
-
-
-
-
-
-
-
-
-
-
-        //todo connect to api of get all question, fix private on server \ api
-        //get question
+        //get all question from DB
         function getQuestion() {
             var reqget = {
                 method: 'Get',
@@ -135,31 +116,15 @@ angular.module("myApp")
             $http(reqget)
                 .then(function mySuccess(response) {
                     for (i = 0; i < response.data.length; i++) {
-                        categoryList.push(response.data[i].category_name);
+                        questionList.push(response.data[i].question);
                     }
-                    setCategoryList();
+                    setQuestionList();
                 }, function myError(response) {
                     console.log("error");
                 })
         };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        //get all countries from DB
         function getCountry() {
             var reqgetcountry = {
                 method: 'Get',
@@ -179,6 +144,9 @@ angular.module("myApp")
                 })
         };
 
+        //###################################################################################################
+
+        //update country list in html page
         function setCountryList() {
             var select = document.getElementById("selectCountry");
             for (var i = 0; i < countryList.length; i++) {
@@ -190,6 +158,7 @@ angular.module("myApp")
             }
         }
 
+        //update category list in html page
         function setCategoryList() {
             var select = document.getElementById("selectCategory");
             for (var i = 0; i < categoryList.length; i++) {
@@ -214,6 +183,50 @@ angular.module("myApp")
                 }
             };
         }
+
+        //update question list in html page
+        function setQuestionList() {
+            var select = document.getElementById("selectQuestion");
+            for (var i = 0; i < questionList.length; i++) {
+                var opt = questionList[i];
+                var el = document.createElement("option");
+                el.textContent = opt;
+                el.value = opt;
+                select.appendChild(el);
+            }
+        }
+
+        //###################################################################################################
+
+        //get selected country
+        function getSelectedCountry(_country) {
+            for (i = 0; i < _country.length; i++) {
+                if (_country[i].selected == true) {
+                    return _country[i].label;
+                }
+            }
+        }
+
+        //get selected question
+        function getQuestionpick(_questionpick) {
+            for (i = 0; i < _questionpick.length; i++) {
+                if (_questionpick[i].selected == true) {
+                    return i;
+                }
+            }
+        }
+
+        //get selected category
+        function getCategories() {
+            var _categoriesBefore = $scope.selection;
+            var _categories = "";
+            if (_categoriesBefore.length > 0)
+                for (i = 0; i < _categoriesBefore.length - 1; i++)
+                    _categories += [i] + ",";
+            _categories += [_categoriesBefore.length];
+            return _categories;
+        }
+
 
     })
 ;
