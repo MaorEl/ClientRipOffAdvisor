@@ -34,14 +34,17 @@ angular.module("myApp")
                     $scope.review1 = response.data[0]['review'];
                     $scope.rate1 = response.data[0]['rating'];
                    // const parsed1 = JSON.parse(response.data[0]['addedOn']);
-                    $scope.date1 = new Date(response.data[0]['addedOn']);
+                    $scope.date1 = new Date(response.data[0]['addedOn']); //todo fix date time
+                    $scope.date1.setHours($scope.date1.getHours()+3)
                     $scope.date1 = $scope.date1.toUTCString();
                     if (response.data.length > 1){
                         $scope.user2 = response.data[1]['username'];
                         $scope.review2 = response.data[1]['review'];
                         $scope.rate2 = response.data[1]['rating'];
                        // const parsed2 = JSON.parse(response.data[1]['addedOn']);
-                        $scope.date2 =  new Date(response.data[1]['addedOn']).toUTCString();
+                        $scope.date2 =  new Date(response.data[1]['addedOn'])
+                        $scope.date2.setHours($scope.date2.getHours()+3)
+                        $scope.date2 = $scope.date2.toUTCString();
                     }
                 }
             });
