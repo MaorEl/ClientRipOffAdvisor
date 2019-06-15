@@ -3,6 +3,18 @@ angular.module("myApp")
 
         var poi = JSON.parse(sessionStorage.getItem("poi"));
 
+
+        req = {
+            method: 'GET',
+            url: $rootScope.host + 'getIntertestPointDetails/' + poi.id,
+        };
+        $http(req)
+            .then(function mySuccess(response) {
+                poi.rank = response.data[0]['rank'];
+                sessionStorage.setItem('poi',JSON.stringify(poi));
+                $scope.atraction_rank = poi.rank;
+            });
+
         req = {
             method: 'PUT',
             url: $rootScope.host + 'viewInterestPoint/' + poi.id
@@ -87,7 +99,19 @@ angular.module("myApp")
 
                 $http(req)
                     .then(function mySuccess(response) {
-                        // $scope.GotAReview = "modal";
+                        // req = {
+                        //     method: 'GET',
+                        //     url: $rootScope.host + 'getIntertestPointDetails/' + poi.id,
+                        // };
+                        // $http(req)
+                        //     .then(function mySuccess(response) {
+                        //         console.log(response.data);
+                        //         poi.rank = response.data[0]['rank'];
+                        //         console.log(poi);
+                        //         sessionStorage.setItem('poi',JSON.stringify(poi));
+                        //         $scope.atraction_rank = poi.rank;
+                        //     });
+
 
                     });
 
