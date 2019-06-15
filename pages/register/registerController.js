@@ -225,7 +225,5 @@ angular.module("myApp")
             _categories += [_categoriesBefore.length];
             return _categories;
         }
-
-
     })
 ;
