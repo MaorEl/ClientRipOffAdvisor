@@ -52,11 +52,14 @@ app.config(function ($routeProvider) {
 
 });
 
-app.run(function($rootScope) {
+app.run(function($rootScope,$location) {
     $rootScope.host = "http://localhost:5000/";
     $rootScope.home = "#!";
     $rootScope.poi = null;
 
+    $rootScope.move_to_favo = function() {
+      $location.path = "/favorites";
+    };
     $rootScope.logout = function () {
         sessionStorage.removeItem('token');
         sessionStorage.removeItem('username');
