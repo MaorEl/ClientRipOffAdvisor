@@ -20,10 +20,7 @@ angular.module("myApp")
         };
         $http(req)
             .then(function mySuccess(response) {
-                atraction.isFavor = 'images/Star-Full-icon.png';
-                if ($rootScope.num_of_favorites < 20) {
-                    $rootScope.num_of_favorites++;
-                }
+                alert("your order has been saved!");
                 $rootScope.fav_icon = "images/fav_icons/w" + $rootScope.num_of_favorites +".png";
             }, function myError(response) {
                 $scope.myWelcome = response.statusText;
