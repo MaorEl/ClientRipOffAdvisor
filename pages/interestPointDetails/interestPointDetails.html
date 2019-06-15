@@ -33,7 +33,7 @@
 
         <div class="modal fade" tabindex="-1" id="ReviewModal" data-keyboard="false" data-backdrop="static">
             <div class="modal-dialog modal-lg">
-                <div class="modal-content">
+                <div class="modal-content" >
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">
                             &times;
@@ -45,20 +45,39 @@
                             <div class="form-group">
                                 <label>{{atraction_name}}</label>
                                 <p>Select rank:</p>
-                                <input type="radio" value="1" style="padding-right: 5px">1
-                                <input type="radio" value="2" style="padding-right: 5px">2
-                                <input type="radio" value="3" style="padding-right: 5px">3
-                                <input type="radio" value="4" style="padding-right: 5px">4
-                                <input type="radio" value="5" style="padding-right: 5px">5
+                                <input type="radio" ng-model='radioResult' ng-value="1" style="padding-right: 5px">1
+                                <input type="radio" ng-model="radioResult" ng-value="2" style="padding-right: 5px">2
+                                <input type="radio" ng-model="radioResult" ng-value="3" style="padding-right: 5px">3
+                                <input type="radio" ng-model="radioResult" ng-value="4" style="padding-right: 5px">4
+                                <input type="radio" ng-model="radioResult" ng-value="5" style="padding-right: 5px">5
                             </div>
                             <div class="form-group">
                                 <label for="desc">Description</label>
-                                <input class="form-control" type="text" id="desc" />
+                                <input class="form-control" type="text" id="desc" ng-model="ReviewDescription"/>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary" ng-click="postReview()">Submit</button>
+                        <button type="submit" class="btn btn-primary" ng-click="postReview(radioResult)" data-dismiss="modal"
+                                data-target="#ThanksModal" data-toggle="modal" ng-disabled="!radioResult">Submit</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" tabindex="-1" id="ThanksModal" data-keyboard="false" data-backdrop="static" >
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header" ng-init="registered=false;">
+                        <button type="button" class="close" data-dismiss="modal">
+                            &times;
+                        </button>
+                        <h2 class="modal-title" ng-show="registered">Thanks for your review</h2>
+                        <h2 class="modal-title" ng-show="!registered">Please sign in if you want to leave a review</h2>
+                    </div>
+                    <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                     </div>
                 </div>

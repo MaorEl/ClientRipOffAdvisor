@@ -57,6 +57,37 @@ angular.module("myApp")
             $location.path(sessionStorage.getItem('lastLocation'));
         };
 
+        $scope.postReview = function (radioResult) {
+            if ($rootScope.myToken === undefined)
+                $scope.registered = false;
+            else{
+
+                $scope.registered = true;
+
+                if ($scope.ReviewDescription === undefined)
+                    $scope.ReviewDescription = '';
+
+                req = {
+                    method: 'POST',
+                    url: $rootScope.host + 'private/rankInterestPoint',
+                    headers: {
+                        'content-type': 'application/json',
+                        'x-auth-token': $rootScope.myToken
+                    },
+                    data: {
+                        interestPointID: poi.id,
+                        rank: radioResult,
+                        description: $scope.ReviewDescription
+                    }
+                };
+                $http(req)
+                    .then(function mySuccess(response) {
+                        // $scope.GotAReview = "modal";
+                    });
+
+            }
+        }
+
     });
 
 
