@@ -83,7 +83,6 @@ angular.module("myApp")
         //###################################################################################################
 
 
-
         //get all categories from DB
         function getCategory() {
             var reqget = {
