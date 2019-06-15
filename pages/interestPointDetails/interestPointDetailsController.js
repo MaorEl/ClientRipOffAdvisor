@@ -34,7 +34,8 @@ angular.module("myApp")
                     $scope.review1 = response.data[0]['review'];
                     $scope.rate1 = response.data[0]['rating'];
                    // const parsed1 = JSON.parse(response.data[0]['addedOn']);
-                    $scope.date1 = new Date(response.data[0]['addedOn']).toUTCString();
+                    $scope.date1 = new Date(response.data[0]['addedOn']);
+                    $scope.date1 = $scope.date1.toUTCString();
                     if (response.data.length > 1){
                         $scope.user2 = response.data[1]['username'];
                         $scope.review2 = response.data[1]['review'];
