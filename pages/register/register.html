@@ -2,7 +2,7 @@
 <div class="register_class">
 
     <p class="sign">Register</p>
-    <form name="loginForm" ng-submit="signUp()" novalidate>
+    <form name="loginForm" ng-submit="signUp()" validate>
         <input type="text" name="username" ng-model="username" required ng-minlength="3" ng-maxlength="8">
         <span ng-show="loginForm.username.$error.required">please fill this box! </span>
         <span ng-show="loginForm.username.$error.minlength">Minimum length is 3 </span>
@@ -43,7 +43,6 @@
         <label ng-repeat="categoryName in category">
             <input
                     type="checkbox"
-                    name="selectedCategory[]"
                     value="{{categoryName}}"
                     ng-checked="selection.indexOf(categoryName) > -1"
                     ng-click="toggleSelection(categoryName)"
