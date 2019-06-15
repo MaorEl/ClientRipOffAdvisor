@@ -19,6 +19,10 @@ app.config(function ($routeProvider) {
             templateUrl: 'pages/interestPoints/interestPoints.html',
             controller: 'interestPointsController as interestPointsCtrl'
         })
+        .when('/interestPointsSaved', {
+            templateUrl: 'pages/interestPointsSaved/interestPointsSaved.html',
+            controller: 'interestPointsSavedController as interestPointsSavedCtrl'
+        })
         .when('/httpRequest', {
             templateUrl: 'pages/http/request.html',
             controller: 'httpController as httpCtrl'

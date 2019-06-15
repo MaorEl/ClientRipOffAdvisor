@@ -1,0 +1,64 @@
+
+<h2>Interest Points</h2>
+<div>
+    <button ng-click="ip_page_func(true)">Sort By Rank</button>
+    <button ng-click="ip_page_func(false)">Cancel Sorting</button>
+
+    <h3>Show and filter Interest points by category:</h3>
+    <h2>{{category1_name}}</h2>
+    <input type="checkbox" ng-model="category1_filter">
+    <h2>{{category2_name}}</h2>
+    <input type="checkbox" ng-model="category2_filter">
+    <h2>{{category3_name}}</h2>
+    <input type="checkbox" ng-model="category3_filter">
+    <h2>{{category4_name}}</h2>
+    <input type="checkbox" ng-model="category4_filter">
+</div>
+<div>
+    <h3>Search Interest Point by name:</h3>
+    <input type="text" ng-model ="search_text">
+    <button ng-click="search()"> Search</button>
+    <div ng-show="search_results_boolean" ng-init="search_results_boolean=false">
+        {{results_text}}
+        <div ng-repeat="atraction in search_results" ng-init="registered=false"  style="float: left; padding-left: 13px">
+            <img src="{{atraction.image}}" ng-click="openDetailsPage(atraction)">
+            <p class="underPhoto" ng-click="openDetailsPage(atraction)">{{atraction.name}}</p>
+            <img src={{atraction.isFavor}} ng-click="addOrRemoveToFavorite(atraction.id,atraction.isFavor,atraction)" style="height: 32px; width: 32px;">
+        </div>
+    </div>
+</div>
+<div ng-show="category1_filter" style="overflow: scroll;height: 400px;" ng-init="category1_filter=true" >
+    <h3>{{category1_name}}</h3>
+    <div ng-repeat="atraction in category1" style="float: left; padding-left: 13px; ">
+        <div>
+            <img src="{{atraction.image}}" ng-click="openDetailsPage(atraction)">
+            <p class="underPhoto" ng-click="openDetailsPage(atraction)">{{atraction.name}}</p>
+            <img ng-src={{atraction.isFavor}} ng-click="addOrRemoveToFavorite(atraction.id,atraction.isFavor,atraction)" style="height: 32px; width: 32px;">
+        </div>
+    </div>
+</div>
+<div ng-show="category2_filter" style="overflow: scroll;height: 400px;" ng-init="category2_filter=true">
+    <h3>{{category2_name}}</h3>
+    <div ng-repeat="atraction in category2" ng-init="registered=false;"  style="float: left; padding-left: 13px">
+        <img src="{{atraction.image}}" ng-click="openDetailsPage(atraction)">
+        <p class="underPhoto" ng-click="openDetailsPage(atraction)">{{atraction.name}}</p>
+        <img src={{atraction.isFavor}} ng-click="addOrRemoveToFavorite(atraction.id,atraction.isFavor,atraction)" style="height: 32px; width: 32px;">
+    </div>
+</div>
+<div ng-show="category3_filter" style="overflow: scroll;height: 400px;" ng-init="category3_filter=true">
+    <h3>{{category3_name}}</h3>
+    <div  ng-repeat="atraction in category3" style="float: left; padding-left: 13px">
+        <img src="{{atraction.image}}" ng-click="openDetailsPage(atraction)">
+        <p class="underPhoto" ng-click="openDetailsPage(atraction)">{{atraction.name}}</p>
+        <img src={{atraction.isFavor}} ng-click="addOrRemoveToFavorite(atraction.id,atraction.isFavor,atraction)" style="height: 32px; width: 32px;">
+    </div>
+    <br>
+</div>
+<div ng-show="category4_filter" style="overflow: scroll;height: 300px;" ng-init="category4_filter=true">
+    <h3>{{category4_name}}</h3>
+    <div ng-repeat="atraction in category4" style="float: left; padding-left: 13px">
+        <img src="{{atraction.image}}" ng-click="openDetailsPage(atraction)">
+        <p class="underPhoto" ng-click="openDetailsPage(atraction)">{{atraction.name}}</p>
+        <img src={{atraction.isFavor}} ng-click="addOrRemoveToFavorite(atraction.id,atraction.isFavor,atraction)" style="height: 32px; width: 32px;">
+    </div>
+</div>

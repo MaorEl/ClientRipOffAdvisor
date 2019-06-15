@@ -21,6 +21,7 @@
         <!-- load controllers -->
         <script src="pages/about/aboutController.js"></script>
         <script src="pages/interestPoints/interestPointsController.js"></script>
+        <script src="pages/interestPointsSaved/interestPointsSavedController.js"></script>
         <script src="pages/http/httpController.js"></script>
         <script src="pages/explore/exploreController.js"></script>
         <script src="pages/login/loginController.js"></script>
@@ -37,6 +38,7 @@
             <a class="active" href={{home}}>Home</a>
             <a href="#!about">About</a>
             <a href="#!interestPoints">Interest Points</a>
+            <a href="#!interestPointsSaved">Interest Points Saved</a>
             <img class="register_menu" ng-click="move_to_favo()" src="{{fav_icon}}"  ng-hide="not_logged"/>
             <p class="register_menu">Hello {{user}}!</p>
             <a class="register_menu" href="#!register" ng-hide="logged">Register NOW</a>
