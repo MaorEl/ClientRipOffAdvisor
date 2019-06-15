@@ -1,6 +1,6 @@
 // poi controller
 angular.module("myApp")
-    .controller("registerController", function ($scope, $http, $rootScope) {
+    .controller("registerController", function ($scope, $http, $rootScope, $location) {
 
         //list for category, country, question from DB
         var categoryList = [];
@@ -72,7 +72,7 @@ angular.module("myApp")
                 .then(function mySuccess() {
                     alert("Hello " + _first_name + "\nSuccessfuly registered! \nPlease log in with your details to use your account!");
                     //todo after register redirect page without refresh
-                    window.location.href = "#!";
+                    $location.path("/login");
                 }, function myError(response) {
                     console.log(response.data);
                     alert("Problem with sign up \n" + response.data);
