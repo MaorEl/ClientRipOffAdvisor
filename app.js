@@ -39,13 +39,19 @@ app.config(function ($routeProvider) {
             templateUrl: 'pages/home/home.html',
             controller: 'homeController as homeCtrl'
         })
+        .when('/details', {
+            templateUrl: 'pages/interestPointDetails/interestPointDetails.html',
+            controller: 'interestPointDetailsController as interestPointDetailsCtrl'
+        })
         // other
         .otherwise({redirectTo: '/'});
+
 });
 
 app.run(function($rootScope) {
     $rootScope.host = "http://localhost:5000/";
     $rootScope.home = "#!";
+    $rootScope.poi = null;
 
     $rootScope.logout = function () {
         sessionStorage.removeItem('token');

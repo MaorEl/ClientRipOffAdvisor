@@ -18,14 +18,20 @@ angular.module("myApp")
             };
             $http(req)
                 .then(function mySuccess(response) {
-                    $rootScope.user = _username;
-                    $rootScope.myToken = response.data;
-                    $rootScope.home = "#!home";
-                    sessionStorage.setItem('token',response.data);
-                    sessionStorage.setItem('username',$rootScope.user);
-                    $rootScope.logged = true;
-                    $rootScope.not_logged = false;
-                    $location.path("/home");
+                    if (!angular.equals({},response.data)) {
+                        $rootScope.user = _username;
+                        $rootScope.myToken = response.data;
+                        $rootScope.home = "#!home";
+                        sessionStorage.setItem('token',response.data);
+                        sessionStorage.setItem('username',$rootScope.user);
+                        $rootScope.logged = true;
+                        $rootScope.not_logged = false;
+                        $location.path("/home");
+                    }
+                    else {
+                        alert("there is problem with your username and/or your password");
+                    }
+
                 }, function myError(response) {
                     // $scope.myWelcome = response.statusText;
                     console.log("error in loginController.checkCardentioals");

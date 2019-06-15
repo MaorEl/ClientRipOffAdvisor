@@ -1,6 +1,6 @@
 // interestPoints controller
 angular.module("myApp")
-.controller("interestPointsController", function ($scope, $http,$rootScope) {
+.controller("interestPointsController", function ($scope, $http,$rootScope,$location) {
     $scope.ip_page_func = function(sort) {
         var command;
         if (sort)
@@ -175,6 +175,25 @@ angular.module("myApp")
             }
         };
         $scope.search = function () {
+            var dictionaryOfUserPoints = [];
+
+            if ($rootScope.myToken != null) { //** not connected user
+                req = {
+                    method: 'GET',
+                    url: $rootScope.host + 'private/getAllFavorites',
+                    headers: {
+                        'x-auth-token': $rootScope.myToken
+                    }
+                };
+
+                $http(req)
+                    .then(function mySuccess(response) {
+                        let res = response.data;
+                        for (let i = 0; i < res.length; i++) {
+                            dictionaryOfUserPoints.push(res[i].id);
+                        }
+                    });
+            }
             var text = $scope.search_text;
             req = {
                 method: 'GET',
@@ -208,10 +227,11 @@ angular.module("myApp")
                     $scope.search_results_boolean = false;
 
                 });
-        }
+        };
 
-
-
-
+    $scope.openDetailsPage = function(atraction){
+        $rootScope.poi = atraction;
+        $location.path("/details");
+    };
 
 });
