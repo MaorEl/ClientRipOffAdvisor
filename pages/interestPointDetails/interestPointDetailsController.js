@@ -37,6 +37,8 @@ angular.module("myApp")
                     $scope.date1 = new Date(response.data[0]['addedOn']); //todo fix date time
                     $scope.date1.setHours($scope.date1.getHours()+3)
                     $scope.date1 = $scope.date1.toUTCString();
+                    $scope.date1 = $scope.date1.split(' ').slice(0, 5).join(' ');
+
                     if (response.data.length > 1){
                         $scope.user2 = response.data[1]['username'];
                         $scope.review2 = response.data[1]['review'];
@@ -45,6 +47,8 @@ angular.module("myApp")
                         $scope.date2 =  new Date(response.data[1]['addedOn'])
                         $scope.date2.setHours($scope.date2.getHours()+3)
                         $scope.date2 = $scope.date2.toUTCString();
+                        $scope.date2 = $scope.date2.split(' ').slice(0, 5).join(' ');
+
                     }
                 }
             });
