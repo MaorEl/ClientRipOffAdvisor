@@ -43,6 +43,10 @@ app.config(function ($routeProvider) {
             templateUrl: 'pages/interestPointDetails/interestPointDetails.html',
             controller: 'interestPointDetailsController as interestPointDetailsCtrl'
         })
+        .when('/favorites', {
+            templateUrl: 'pages/favorites/favorites.html',
+            controller: 'favoritesController as favoritesCtrl'
+        })
         // other
         .otherwise({redirectTo: '/'});
 
@@ -72,6 +76,9 @@ app.run(function($rootScope) {
         $rootScope.user = 'guest';
         $rootScope.logged = false;
         $rootScope.not_logged = true;
+        $rootScope.num_of_favorites = 0;
+        $rootScope.fav_icon = "images/fav_icons/w" + $rootScope.num_of_favorites +".png";
+
 
         }
 

@@ -22,6 +22,8 @@
         <script src="pages/home/homeController.js"></script>
         <script src="pages/register/registerController.js"></script>
         <script src="pages/interestPointDetails/interestPointDetailsController.js"></script>
+        <script src="pages/favorites/favoritesController.js"></script>
+
 
         <!-- menu -->
         <div class="topnav">
@@ -29,20 +31,14 @@
             <a class="active" href={{home}}>Home</a>
             <a href="#!about">About</a>
             <a href="#!interestPoints">Interest Points</a>
-            <a href="#!httpRequest">POI</a>
-            <p class="register_menu">Hello {{user}}!</p>`
+            <img class="register_menu" href="#!favorites" src="{{fav_icon}}"  ng-hide="not_logged"/>
+            <p class="register_menu">Hello {{user}}!</p>
             <a class="register_menu" href="#!register" ng-hide="logged">Register NOW</a>
             <a class="register_menu" href="#!login" ng-hide="logged">Login</a>
             <a class="register_menu" ng-hide="not_logged" href="#!" ng-click="logout()">Log Out</a>
 
-
-
-
-
-
-        </div>
-
-        <!-- This section changes as the hashbang changes -->
+</div>
+            <!-- This section changes as the hashbang changes -->
         <div ng-view></div>
     </body>
 </html>

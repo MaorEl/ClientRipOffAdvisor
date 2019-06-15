@@ -27,6 +27,7 @@ angular.module("myApp")
                         $rootScope.logged = true;
                         $rootScope.not_logged = false;
                         $location.path("/home");
+                        $scope.updateFav();
                     }
                     else {
                         alert("there is problem with your username and/or your password");
@@ -43,5 +44,29 @@ angular.module("myApp")
             // console.log(usernameForRestore);
             $rootScope.usernameForRestore = usernameForRestore;
         };
+
+        $scope.updateFav = function() {
+            var dictionaryOfUserPoints = [];
+
+            if ($rootScope.myToken != null) { //** not connected user
+                req = {
+                    method: 'GET',
+                    url: $rootScope.host + 'private/getAllFavorites',
+                    headers: {
+                        'x-auth-token': $rootScope.myToken
+                    }
+                };
+
+                $http(req)
+                    .then(function mySuccess(response) {
+                        let res = response.data;
+                        for (let i = 0; i < res.length; i++) {
+                            dictionaryOfUserPoints.push(res[i].id);
+                        }
+                        $rootScope.num_of_favorites = dictionaryOfUserPoints.length;
+                        $rootScope.fav_icon = "images/fav_icons/w" + $rootScope.num_of_favorites +".png";
+                    });
+            }
+        }
 
     });

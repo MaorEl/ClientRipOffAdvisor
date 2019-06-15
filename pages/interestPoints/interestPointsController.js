@@ -147,6 +147,10 @@ angular.module("myApp")
                     $http(req)
                         .then(function mySuccess(response) {
                             atraction.isFavor = 'images/Star-Full-icon.png';
+                            if ($rootScope.num_of_favorites < 20) {
+                                $rootScope.num_of_favorites++;
+                            }
+                            $rootScope.fav_icon = "images/fav_icons/w" + $rootScope.num_of_favorites +".png";
                         }, function myError(response) {
                             $scope.myWelcome = response.statusText;
                         });
@@ -165,6 +169,10 @@ angular.module("myApp")
                     $http(req)
                         .then(function mySuccess(response) {
                             atraction.isFavor = 'images/Star-Empty-icon.png';
+                            if ($rootScope.num_of_favorites > 0) {
+                                $rootScope.num_of_favorites--;
+                            }
+                            $rootScope.fav_icon = "images/fav_icons/w" + $rootScope.num_of_favorites +".png";
                         }, function myError(response) {
                             $scope.myWelcome = response.statusText;
                         });
@@ -192,6 +200,7 @@ angular.module("myApp")
                         for (let i = 0; i < res.length; i++) {
                             dictionaryOfUserPoints.push(res[i].id);
                         }
+
                     });
             }
             var text = $scope.search_text;
