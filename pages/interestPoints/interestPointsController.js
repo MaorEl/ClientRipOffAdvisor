@@ -230,6 +230,7 @@ angular.module("myApp")
         };
 
     $scope.openDetailsPage = function(atraction){
+        sessionStorage.setItem('lastLocation', $location.path());
         sessionStorage.setItem('poi',JSON.stringify(atraction));
         $rootScope.poi = atraction;
         $location.path("/details");

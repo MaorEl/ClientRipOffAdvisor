@@ -33,7 +33,6 @@ angular.module("myApp")
                 'x-auth-token': $rootScope.myToken
             }
         };
-        console.log("maor434432143223");
         $http(req).
         then(function mySuccess(response) {
             var results = response.data;
@@ -52,6 +51,7 @@ angular.module("myApp")
 
 
     $scope.openDetailsPage = function(atraction){
+        sessionStorage.setItem('lastLocation', $location.path());
         sessionStorage.setItem('poi',JSON.stringify(atraction));
         $rootScope.poi = atraction;
         $location.path("/details");

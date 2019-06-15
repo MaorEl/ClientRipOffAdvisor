@@ -1,5 +1,5 @@
 angular.module("myApp")
-    .controller("interestPointDetailsController", function ($scope, $http,$rootScope) {
+    .controller("interestPointDetailsController", function ($scope, $http,$rootScope,$location) {
 
         var poi = JSON.parse(sessionStorage.getItem("poi"));
 
@@ -45,4 +45,8 @@ angular.module("myApp")
                     }
                 }
             });
+
+        $scope.goBack = function () {
+            $location.path(sessionStorage.getItem('lastLocation'));
+        }
     });
