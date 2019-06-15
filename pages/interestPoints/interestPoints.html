@@ -21,8 +21,8 @@
     <div ng-show="search_results_boolean" ng-init="search_results_boolean=false">
         {{results_text}}
         <div ng-repeat="atraction in search_results" ng-init="registered=false"  style="float: left; padding-left: 13px">
-            <img src="{{atraction.image}}">
-            <p class="underPhoto">{{atraction.name}}</p>
+            <img src="{{atraction.image}}" ng-click="openDetailsPage(atraction)">
+            <p class="underPhoto" ng-click="openDetailsPage(atraction)">{{atraction.name}}</p>
             <img src={{atraction.isFavor}} ng-click="addOrRemoveToFavorite(atraction.id,atraction.isFavor,atraction)" style="height: 32px; width: 32px;">
         </div>
     </div>

@@ -1,6 +1,6 @@
 // about controller
 angular.module("myApp")
-.controller("homeController", function ($scope, $http, $rootScope) {
+.controller("homeController", function ($scope, $http, $rootScope,$location) {
 
 
     popular();
