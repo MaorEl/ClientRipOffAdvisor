@@ -58,21 +58,21 @@ angular.module("myApp")
                 },
                 data: {
                     username: _username,
-                    question_id: _question,
-                    answer: _questionpick
+                    question_id: _questionpick,
+                    answer: _question
                 }
             };
             $http(req2)
                 .then(function mySuccess() {
-                    $http(req)
-                        .then(function mySuccess() {
-                            alert("Hello " + _first_name + "\nSuccessfuly registered! \nPlease log in with your details to use your account!");
-                            //todo after register redirect page without refresh
-                            window.location.href = "#!";
-                        }, function myError(response) {
-                            console.log(response.data);
-                            alert("Problem with sign up \n" + response.data);
-                        })
+                }, function myError(response) {
+                    console.log(response.data);
+                    alert("Problem with sign up \n" + response.data);
+                })
+            $http(req)
+                .then(function mySuccess() {
+                    alert("Hello " + _first_name + "\nSuccessfuly registered! \nPlease log in with your details to use your account!");
+                    //todo after register redirect page without refresh
+                    window.location.href = "#!";
                 }, function myError(response) {
                     console.log(response.data);
                     alert("Problem with sign up \n" + response.data);
