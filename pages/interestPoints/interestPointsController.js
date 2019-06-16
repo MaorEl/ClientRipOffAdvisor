@@ -1,3 +1,15 @@
+// function checkSize(results) {
+//     for (var i = 0; i<results.length ; i ++){
+//         var img = results[i]['image'];
+//         if (img.height > 300 || img.width > 300){
+//             img.height = img.height/2;
+//             img.width = img.width/2;
+//             console.log(img.height , img.width);
+//             results[i]['image'] = img;
+//         }
+//     }
+// }
+
 // interestPoints controller
 angular.module("myApp")
 .controller("interestPointsController", function ($scope, $http,$rootScope,$location) {
@@ -63,6 +75,7 @@ angular.module("myApp")
                             else
                                 results[i]["isFavor"] = 'images/Star-Empty-icon.png';
                         }
+                        // results = checkSize(results);
                         $scope.category1 = results;
                     }, function myError(response) {
                         $scope.myWelcome = response.statusText;
@@ -128,6 +141,24 @@ angular.module("myApp")
                 // $scope.myWelcome = response.statusText;
                 console.log("error in loginController.checkCardentioals");
             });
+
+
+        $scope.checkSize = function (height, width) {
+            console.log(height, width);
+            if (height > 300 || width > 300){
+                height = height/2;
+                width = width/2;
+            }
+            console.log(height, width);
+            return {
+                height: height,
+                width: width
+            }
+        }
+
+
+
+
 
     };
     $scope.ip_page_func(false);

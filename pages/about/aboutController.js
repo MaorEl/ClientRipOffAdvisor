@@ -5,6 +5,5 @@ angular.module("myApp")
         $scope.btnCount = 0;
         $scope.myFunc = function () {
             $scope.btnCount++;
-            $rootScope.user = 'anael';
         }
     });
