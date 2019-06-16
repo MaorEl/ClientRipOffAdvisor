@@ -117,6 +117,7 @@
 
 
 .wrapper {
+    overflow-x: scroll;
     white-space: nowrap;
 }
 .table {
