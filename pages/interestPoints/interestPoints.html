@@ -31,7 +31,10 @@
         <img src={{atraction.isFavor}} ng-click="addOrRemoveToFavorite(atraction.id,atraction.isFavor,atraction)" style="height: 32px; width: 32px;">
     </div>
 </div>
-<div class="wrapper row" ng-show="category1_filter" style="height: 400px; width: 80%; margin: auto;" ng-init="category1_filter=true" >
+
+<hr>
+
+<div class="wrapper row" ng-show="category1_filter" style="height: 300px; width: 100%; margin: auto;" ng-init="category1_filter=true" >
     <h3>{{category1_name}}</h3>
     <div class="table">
         <div ng-repeat="atraction in category1" style="float: left; " class="tr column">
@@ -45,7 +48,10 @@
         </div>
     </div>
 </div>
-<div ng-show="category2_filter" class="wrapper row" style="height: 400px; width: 80%; margin: auto;" ng-init="category2_filter=true">
+
+<hr>
+
+<div ng-show="category2_filter" class="wrapper row" style="height: 300px; width: 100%; margin: auto;" ng-init="category2_filter=true">
     <h3>{{category2_name}}</h3>
     <div class="table">
         <div ng-repeat="atraction in category2" class="tr column" style="float: left;">
@@ -59,7 +65,10 @@
         </div>
     </div>
 </div>
-<div ng-show="category3_filter" class="wrapper row" style="height: 400px; width: 80%; margin: auto;" ng-init="category3_filter=true">
+
+<hr>
+
+<div ng-show="category3_filter" class="wrapper row" style="height: 300px; width: 100%; margin: auto;" ng-init="category3_filter=true">
     <h3>{{category3_name}}</h3>
     <div class="table">
         <div  ng-repeat="atraction in category3" style="float: left; " class="tr column">
@@ -73,7 +82,10 @@
         </div>
     </div>
 </div>
-<div class="wrapper row" ng-show="category4_filter" style="height: 400px; width: 80%; margin: auto;" ng-init="category4_filter=true">
+
+<hr>
+
+<div class="wrapper row" ng-show="category4_filter" style="height: 300px; width: 100%; margin: auto;" ng-init="category4_filter=true">
     <h3>{{category4_name}}</h3>
     <div class="table">
         <div ng-repeat="atraction in category4" style="float: left; " class="tr column">
