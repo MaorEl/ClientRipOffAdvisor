@@ -88,8 +88,6 @@ app.run(function($rootScope,$location) {
         $rootScope.logged = false;
         $rootScope.not_logged = true;
         $rootScope.num_of_favorites = 0;
-
-
         }
 
 });
