@@ -118,6 +118,7 @@
 
 .wrapper {
     overflow: scroll;
+    overflow-x: hidden;
     white-space: nowrap;
 }
 .table {
