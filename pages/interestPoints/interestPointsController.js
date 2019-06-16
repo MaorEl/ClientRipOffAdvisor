@@ -27,6 +27,8 @@ angular.module("myApp")
                 $scope.category2_name = cat2['category_name'];
                 $scope.category3_name = cat3['category_name'];
                 $scope.category4_name = cat4['category_name'];
+            }, function myError(response) {
+                console.log(response);
             });
 
         var dictionaryOfUserPoints = [];
