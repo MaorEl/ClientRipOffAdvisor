@@ -48,9 +48,13 @@
 
 
 .pages {
-    margin-top: 80px;
+    margin-top: 0px;
+    background-color: #dddddd;
 }
 
+.register_class {
+    margin-left: 50px;
+}
 
 .register_menu {
     float: right;
