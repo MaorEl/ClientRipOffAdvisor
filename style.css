@@ -8,6 +8,11 @@
 
 }
 
+.ip {
+    align-items: center;
+    margin-left: 15px;
+}
+
 /* Style the links inside the navigation bar */
 .topnav a {
     float: left;

@@ -1,30 +1,34 @@
 
-<h2>Interest Points</h2>
-<div>
+<div class="ip">
+    <h2>Interest Points</h2>
     <button ng-click="ip_page_func(true)">Sort By Rank</button>
     <button ng-click="ip_page_func(false)">Cancel Sorting</button>
 
     <h3>Show and filter Interest points by category:</h3>
-    <h2>{{category1_name}}</h2>
-    <input type="checkbox" ng-model="category1_filter">
-    <h2>{{category2_name}}</h2>
-    <input type="checkbox" ng-model="category2_filter">
-    <h2>{{category3_name}}</h2>
-    <input type="checkbox" ng-model="category3_filter">
-    <h2>{{category4_name}}</h2>
-    <input type="checkbox" ng-model="category4_filter">
-</div>
-<div>
-    <h3>Search Interest Point by name:</h3>
-    <input type="text" ng-model ="search_text">
+    <label class = "checkbox-inline">
+        <input type="checkbox" ng-model="category1_filter">{{category1_name}}
+    </label>
+    <label class = "checkbox-inline">
+        <input type="checkbox" ng-model="category2_filter">{{category2_name}}
+    </label>
+    <label class = "checkbox-inline">
+        <input type="checkbox" ng-model="category3_filter">{{category3_name}}
+    </label>
+    <label class = "checkbox-inline">
+        <input type="checkbox" ng-model="category4_filter">{{category4_name}}
+    </label>
+    <label class = "checkbox-inline">
+        Search Interest Point by name:         <input type="text" ng-model ="search_text">
+    </label>
     <button ng-click="search()"> Search</button>
-    <div ng-show="search_results_boolean" ng-init="search_results_boolean=false" class="row">
-        {{results_text}}
-        <div ng-repeat="atraction in search_results" ng-init="registered=false"  style="float: left; padding-left: 13px" class="column">
-            <img src="{{atraction.image}}" ng-click="openDetailsPage(atraction)" style="max-height: 60%; max-width: 60%">
-            <p class="underPhoto" ng-click="openDetailsPage(atraction)">{{atraction.name}}</p>
-            <img src={{atraction.isFavor}} ng-click="addOrRemoveToFavorite(atraction.id,atraction.isFavor,atraction)" style="height: 32px; width: 32px;">
-        </div>
+</div>
+
+<div ng-show="search_results_boolean" ng-init="search_results_boolean=false" class="row">
+    {{results_text}}
+    <div ng-repeat="atraction in search_results" ng-init="registered=false"  style="float: left; padding-left: 13px" class="column">
+        <img src="{{atraction.image}}" ng-click="openDetailsPage(atraction)" style="max-height: 60%; max-width: 60%">
+        <p class="underPhoto" ng-click="openDetailsPage(atraction)">{{atraction.name}}</p>
+        <img src={{atraction.isFavor}} ng-click="addOrRemoveToFavorite(atraction.id,atraction.isFavor,atraction)" style="height: 32px; width: 32px;">
     </div>
 </div>
 <div class="wrapper row" ng-show="category1_filter" style="height: 400px; width: 80%; margin: auto;" ng-init="category1_filter=true" >
