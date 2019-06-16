@@ -23,12 +23,18 @@
     <button ng-click="search()"> Search</button>
 </div>
 
-<div ng-show="search_results_boolean" ng-init="search_results_boolean=false" class="row">
+<div ng-show="search_results_boolean" ng-init="search_results_boolean=false" class="row wrapper">
     {{results_text}}
-    <div ng-repeat="atraction in search_results" ng-init="registered=false"  style="float: left; padding-left: 13px" class="column">
-        <img src="{{atraction.image}}" ng-click="openDetailsPage(atraction)" style="max-height: 60%; max-width: 60%">
-        <p class="underPhoto" ng-click="openDetailsPage(atraction)">{{atraction.name}}</p>
-        <img src={{atraction.isFavor}} ng-click="addOrRemoveToFavorite(atraction.id,atraction.isFavor,atraction)" style="height: 32px; width: 32px;">
+    <div class="table">
+        <div ng-repeat="atraction in search_results" ng-init="registered=false"  style="float: left; padding-left: 13px" class="column tr">
+            <div class="td">
+                <div class="box">
+                    <img src="{{atraction.image}}" ng-click="openDetailsPage(atraction)" style="max-height: 60%; max-width: 60%">
+                    <p class="underPhoto" ng-click="openDetailsPage(atraction)">{{atraction.name}}</p>
+                    <img src={{atraction.isFavor}} ng-click="addOrRemoveToFavorite(atraction.id,atraction.isFavor,atraction)" style="height: 32px; width: 32px;">
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
