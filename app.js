@@ -57,8 +57,8 @@ app.config(function ($routeProvider) {
 });
 
 app.run(function($rootScope,$location) {
-    //$rootScope.host = "http://localhost:5000/";
-    $rootScope.host = "https://ripoffadvisorserver.azurewebsites.net/";
+    $rootScope.host = "http://localhost:5000/";
+   // $rootScope.host = "https://ripoffadvisorserver.azurewebsites.net/";
     $rootScope.home = "#!";
     $rootScope.poi = null;
 
