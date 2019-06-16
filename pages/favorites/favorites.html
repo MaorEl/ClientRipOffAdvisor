@@ -9,13 +9,17 @@
 
 
 </div>
-<div>
-    <div>
+    <div class="row wrapper">
         {{saved_text}}
-        <div ng-repeat="atraction in dictionaryOfUserPoints" style="float: left; padding-left: 13px">
-            <img src="{{atraction.image}}" ng-click="openDetailsPage(atraction)">
-            <p class="underPhoto" ng-click="openDetailsPage(atraction)">{{atraction.name}}</p>
-            <img src={{atraction.isFavor}} ng-click="addOrRemoveToFavorite(atraction.id,atraction.isFavor,atraction)" style="height: 32px; width: 32px;">
+        <div class="table">
+            <div ng-repeat="atraction in dictionaryOfUserPoints" class="tr column" style="float: left; padding-left: 13px">
+                <div class="td">
+                    <div class="box">
+                        <img src="{{atraction.image}}" ng-click="openDetailsPage(atraction)" style="max-height: 70%; max-width: 70%; ">
+                        <p class="underPhoto" ng-click="openDetailsPage(atraction)">{{atraction.name}}</p>
+                        <img src={{atraction.isFavor}} ng-click="addOrRemoveToFavorite(atraction.id,atraction.isFavor,atraction)" style="height: 32px; width: 32px;">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
