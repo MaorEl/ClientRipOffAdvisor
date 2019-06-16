@@ -68,6 +68,7 @@ app.run(function($rootScope,$location) {
     $rootScope.logout = function () {
         sessionStorage.removeItem('token');
         sessionStorage.removeItem('username');
+        sessionStorage.removeItem('nof');
         $rootScope.logged = false;
         $rootScope.not_logged = true;
         $rootScope.user = 'guest';
@@ -77,15 +78,16 @@ app.run(function($rootScope,$location) {
 
             $rootScope.user = sessionStorage.getItem("username");
             $rootScope.myToken = sessionStorage.getItem("token");
+            $rootScope.num_of_favorites = sessionStorage.getItem("nof");
             $rootScope.logged = true;
             $rootScope.not_logged = false;
+            $rootScope.fav_icon = "images/fav_icons/w" + $rootScope.num_of_favorites +".png";
     } else {
         console.log("no user logged right now");
         $rootScope.user = 'guest';
         $rootScope.logged = false;
         $rootScope.not_logged = true;
         $rootScope.num_of_favorites = 0;
-        $rootScope.fav_icon = "images/fav_icons/w" + $rootScope.num_of_favorites +".png";
 
 
         }

@@ -180,6 +180,7 @@ angular.module("myApp")
                             atraction.isFavor = 'images/Star-Full-icon.png';
                             if ($rootScope.num_of_favorites < 20) {
                                 $rootScope.num_of_favorites++;
+                                sessionStorage.setItem('nof',$rootScope.num_of_favorites);
                             }
                             $rootScope.fav_icon = "images/fav_icons/w" + $rootScope.num_of_favorites +".png";
                         }, function myError(response) {
@@ -202,6 +203,7 @@ angular.module("myApp")
                             atraction.isFavor = 'images/Star-Empty-icon.png';
                             if ($rootScope.num_of_favorites > 0) {
                                 $rootScope.num_of_favorites--;
+                                sessionStorage.setItem('nof',$rootScope.num_of_favorites);
                             }
                             $rootScope.fav_icon = "images/fav_icons/w" + $rootScope.num_of_favorites +".png";
                         }, function myError(response) {

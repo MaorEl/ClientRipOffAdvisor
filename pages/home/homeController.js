@@ -7,7 +7,7 @@ angular.module("myApp")
     saved();
 
     function  popular() {
-        console.log("maor434432143223");
+        // console.log("maor434432143223");
         var req = {
             method: 'GET',
             url: $rootScope.host + 'private/getTwoPopularInterestPoints',
@@ -40,7 +40,7 @@ angular.module("myApp")
                 $scope.saved_text = "You have not saved any interest point yet. Explore them and save your favorites!"
             }
             else {
-                console.log(results);
+                // console.log(results);
                 $scope.saved_attractions = results;
             }
 

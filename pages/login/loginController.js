@@ -64,6 +64,7 @@ angular.module("myApp")
                             dictionaryOfUserPoints.push(res[i].id);
                         }
                         $rootScope.num_of_favorites = dictionaryOfUserPoints.length;
+                        sessionStorage.setItem('nof',$rootScope.num_of_favorites);
                         $rootScope.fav_icon = "images/fav_icons/w" + $rootScope.num_of_favorites +".png";
                     });
             }
