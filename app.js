@@ -61,8 +61,9 @@ app.run(function($rootScope,$location) {
     $rootScope.home = "#!";
     $rootScope.poi = null;
 
-    $rootScope.move_to_favo = function() {
-      $location.path = "/favorites";
+    $rootScope.favorites_show = function() {
+      $location.path( "/favorites");
+
     };
     $rootScope.logout = function () {
         sessionStorage.removeItem('token');
